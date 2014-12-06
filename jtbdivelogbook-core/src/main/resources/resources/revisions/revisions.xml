@@ -1,0 +1,1183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Document : versions.xml Created on : February 11, 2011, 7:14 AM Author 
+	: gautier -->
+
+<versions>
+	<version id="2.7.0">
+		<change date="2012-07-01" id="103">
+			<level>change</level>
+			<title>Introduce material set</title>
+			<description>A Material Set must contain a bundle of material frequently used, a configuration of dive equipment. The use of a material set should make possible to select multiple materials at once for a dive
+			</description>
+			<resolution date="2012-10-21">The material sets configuration are available in the Mat Cave.  In the equipment panel of the dive, the use of a material set is possible.
+			</resolution>
+		</change>
+	<change date="2012-10-21" id="102">
+			<level>change</level>
+			<title>Logbook Report extra values</title>
+			<description>Add extra values for each dive
+			</description>
+			<resolution date="2012-10-21">Extra property in the report wizard to add dive details (purpose, platform, type).
+			</resolution>
+		</change>
+	<change date="2012-10-21" id="102">
+			<level>change</level>
+			<title>Jasper report 4.7.1</title>
+			<description>Use the new version of Jasper report
+			</description>
+			<resolution date="2012-10-21">Done
+			</resolution>
+		</change>
+	<change date="2012-10-21" id="102">
+			<level>change</level>
+			<title>Map panel</title>
+			<description>The map panel doesn't work well.
+			</description>
+			<resolution date="2012-10-21">Used a new framework (from Open Street Maps instead of a SwingX-WS component)
+			</resolution>
+		</change>
+		<change date="2012-10-21" id="101">
+			<level>change</level>
+			<title>Wizards layout</title>
+			<description>Standardize the layout of the wizard using the
+				WizardPanel
+			</description>
+			<resolution date="2012-10-21">Done for Config wizard, Import wizard, Export wizard
+			</resolution>
+		</change>
+
+		<change date="2012-10-06" id="100">
+			<level>change</level>
+			<title>Component for coordinates</title>
+			<description>With a spinner, the value can never be null, meaning you
+				can't reset a coordinate
+			</description>
+			<resolution date="2012-10-06">Used textfield instead of spinner. added
+				a button to clear the coordinates.
+			</resolution>
+		</change>
+		<change date="2012-09-16" id="99">
+			<level>change</level>
+			<title>New name of a tag in the surrogate file</title>
+			<description>Replace 'document_divelocation' by 'document_divesite'.
+			</description>
+			<resolution date="2012-09-18">Done
+			</resolution>
+		</change>
+		<change date="2012-09-16" id="98">
+			<level>change</level>
+			<title>Recover a surrogate file</title>
+			<description>Check whether the surrogate file is present or not and
+				recreate a new one if necessary
+			</description>
+			<resolution date="2012-09-18">Done
+			</resolution>
+		</change>
+		<change date="2012-09-10" id="97">
+			<level>bugfix</level>
+			<title>Bug in the configuration</title>
+			<description>A problem occurs in some case during the configuration
+				(surrogate keys file not created)
+			</description>
+			<resolution date="2012-09-10"> Bug fixed.
+			</resolution>
+		</change>
+		<change date="2012-09-10" id="96">
+			<level>bugfix</level>
+			<title>Stat panel view</title>
+			<description>Only available if a logbook is selected. This ain't
+				logic. The viewer should always be accessible; it must be filled when a logbook is selected.
+			</description>
+			<resolution date="2012-09-10">Always accessible now.
+			</resolution>
+		</change>
+		<change date="2012-08-28" id="95">
+			<level>bugfix</level>
+			<title>Equipment panel null values</title>
+			<description>Some values appears as "null"
+			</description>
+			<resolution date="2012-08-28">done.
+			</resolution>
+		</change>
+
+		<change date="2012-08-21" id="94">
+			<level>change</level>
+			<title>XML Parsers refactoring</title>
+			<description>Refactoring of the parsers make them extend the same
+				Absrtact class
+			</description>
+			<resolution date="2012-08-26">done.
+			</resolution>
+		</change>
+		<change date="2012-06-28" id="93">
+			<level>bugfix</level>
+			<title>XML Version converter</title>
+			<description>Problem when a succession of conversion occurs.
+			</description>
+			<resolution date="2012-06-28">The conversion of the XML is based now on
+				the XML document and not on the Inpustream anymore.
+			</resolution>
+		</change>
+	</version>
+
+	<version id="2.6.0">
+		<change date="2012-06-01" id="92">
+			<level>change</level>
+			<title>Divers: new attributes</title>
+			<description>Add the birthdate and contact informations.
+			</description>
+			<resolution date="2012-06-01">Birthdate added. Contact informations
+				added (email, phone and mobile)
+			</resolution>
+		</change>
+		<change date="2012-05-28" id="91">
+			<level>bugfix</level>
+			<title>RXTX libs for Linux</title>
+			<description>Since the version 2.2, the linux libs for RXTX where not
+				archived anymore in the zip file.
+			</description>
+			<resolution date="2012-05-28">They are now present again. Just wonder
+				why dind't anybody see it... Am I the only suer of this
+				application???
+			</resolution>
+		</change>
+		<change date="2012-05-10" id="90">
+			<level>change</level>
+			<title>Statistics modified</title>
+			<description>Use a wizard for statistics and make it extensible for
+				the future. Also integrate the panel in the docking framework.
+			</description>
+			<resolution date="2012-05-28">Integration done. Wizards done. Basic
+				wizard options are developped. Many parameters could be used to
+				produce statistics. Just develop now...
+			</resolution>
+		</change>
+		<change date="2012-05-28" id="89">
+			<level>bugfix</level>
+			<title>Console logging orientation</title>
+			<description>Console doesn't append new event when logging at the
+				bottom after max row size is reached.
+			</description>
+			<resolution date="2012-05-28">Condition when removing a line depending
+				on the "log on top" property
+			</resolution>
+		</change>
+		<change date="2012-05-14" id="88">
+			<level>change</level>
+			<title>JFreechart</title>
+			<description>Use the new version (1.0.14).
+			</description>
+			<resolution date="2012-05-14">done</resolution>
+		</change>
+		<change date="2012-05-01" id="87">
+			<level>change</level>
+			<title>Gaz Mix Switch time on profile</title>
+			<description>On the profile panel, there must be a way to display the
+				gaz mixes.
+			</description>
+			<resolution date="2012-05-07">The gaz mix are visible when selecting
+				the option on the panel
+			</resolution>
+		</change>
+
+		<change date="2012-05-01" id="86">
+			<level>change</level>
+			<title>Dive surface time to seconds</title>
+			<description>Modifying the dive surface time to seconds
+			</description>
+			<resolution date="2012-05-01">done</resolution>
+		</change>
+
+		<change date="2012-04-23" id="85">
+			<level>change</level>
+			<title>Local Proxy settings</title>
+			<description>The proxy settings used must be the local one's
+			</description>
+			<resolution date="2012-04-23">Local Proxy settings loaded at startup.
+			</resolution>
+		</change>
+		<change date="2012-04-23" id="84">
+			<level>change</level>
+			<title>Dialog standardisation</title>
+			<description>Some "YES-NO" Dialog should have the same behaviour and
+				the same layout.
+			</description>
+			<resolution date="2012-04-23">Many Dialogs have been refactored to
+				extend the PromptDialog class.
+			</resolution>
+		</change>
+		<change date="2012-04-23" id="83">
+			<level>change</level>
+			<title>Countries translation</title>
+			<description>Not every country is translated in the Bundle files
+			</description>
+			<resolution date="2012-04-23">Done for French
+			</resolution>
+		</change>
+		<change date="2012-04-23" id="82">
+			<level>change</level>
+			<title>Map Component</title>
+			<description>Every time the map should be displayed, it should occur
+				in a central dockable component.
+			</description>
+			<resolution date="2012-04-23">A new dockable component is created. It's
+				shown when required (ex: click on button in some panels). Only the
+				map used to pick up pin points are loaded in separated dialogs (ex:
+				Dive site editor)
+			</resolution>
+		</change>
+		<change date="2012-03-27" id="81">
+			<level>bugfix</level>
+			<title>Browser popup menu</title>
+			<description>Popup dissapears when moving the mouse after right-click
+				on the browser
+			</description>
+			<resolution date="2012-03-27">Fixed. This was due to a mouse events
+				badly interpreted.
+			</resolution>
+		</change>
+		<change date="2012-03-27" id="80">
+			<level>bugfix</level>
+			<title>JtB import Export format</title>
+			<description>Problems using this format under Windows (for documents)
+			</description>
+			<resolution date="2012-03-27">Fixed. This is due to the filepath
+				separator char in zip file; only "/" are interpreted, independently
+				from the OS
+			</resolution>
+		</change>
+		<change date="2012-03-21" id="79">
+			<level>bugfix</level>
+			<title>Tooltips in the console</title>
+			<description>Tooltips didn't work (on every line of the console)
+			</description>
+			<resolution date="2012-03-21">Done.</resolution>
+		</change>
+		<change date="2012-03-21" id="78">
+			<level>bugfix</level>
+			<title>Order in the console</title>
+			<description>the boolean is interpretted as the inverse of what it
+				should be
+			</description>
+			<resolution date="2012-03-21">Done.</resolution>
+		</change>
+		<change date="2012-03-11" id="77">
+			<level>change</level>
+			<title>Use of Jasperreports 4.5.1</title>
+			<description>
+			</description>
+			<resolution date="2012-03-11">Done.</resolution>
+		</change>
+		<change date="2012-03-01" id="76">
+			<level>change</level>
+			<title>Report modification</title>
+			<description>Extra values of the dive must be included.
+			</description>
+			<resolution date="2012-03-11">Added dive purpose, type and platform if
+				desired (selected as option when printing the report).
+			</resolution>
+		</change>
+		<change date="2012-03-01" id="75">
+			<level>change</level>
+			<title>Dive site address</title>
+			<description>Adding an address to a dive site.
+			</description>
+			<resolution date="2012-03-01">Done.</resolution>
+		</change>
+		<change date="2012-03-01" id="74">
+			<level>change</level>
+			<title>Dive time modification</title>
+			<description>When modifying a dive time, the dive profile and the
+				switchtime of the dive tanks must be adapted.
+			</description>
+			<resolution date="2012-03-01">Done.</resolution>
+		</change>
+		<change date="2012-02-29" id="73">
+			<level>bugfix</level>
+			<title>Dive purpose and type components</title>
+			<description>Height of the components has to be reviewed.
+			</description>
+			<resolution date="2012-02-29">Done.</resolution>
+		</change>
+	</version>
+	<version id="2.5.1">
+		<change date="2011-12-26" id="72">
+			<level>change</level>
+			<title>Save dive when closing a logbook</title>
+			<description>When closing a logbook, opening a logbook or creating a
+				new one, a dialog must prompt (as when closing the application) to
+				save the modified dives.
+			</description>
+			<resolution date="2011-12-26">Done.</resolution>
+		</change>
+		<change date="2011-12-26" id="72">
+			<level>change</level>
+			<title>Download dive progress bar</title>
+			<description>The layout of the progress dialog when downloading dives
+				from a dive computer isn't pretty.
+			</description>
+			<resolution date="2011-12-26">Done.</resolution>
+		</change>
+		<change date="2011-12-26" id="72">
+			<level>bugfix</level>
+			<title>Euro symbol in the material panel</title>
+			<description>Symbol doens't display correctly
+			</description>
+			<resolution date="2011-12-26">replaced by "euros"</resolution>
+		</change>
+		<change date="2011-12-26" id="71">
+			<level>change</level>
+			<title>Layout for Material edition dialog</title>
+			<description>Review the layout because the scroll is automatically
+				activated in the General panel
+			</description>
+			<resolution date="2011-12-26">Done.</resolution>
+		</change>
+		<change date="2011-12-26" id="70">
+			<level>bugfix</level>
+			<title>Missing bundle entries</title>
+			<description>3 bundle entries are missing: camera, videocamera and
+				lead
+			</description>
+			<resolution date="2011-12-26">Done.</resolution>
+		</change>
+	</version>
+	<version id="2.5.0">
+		<change date="2011-11-05" id="69">
+			<level>bugfix</level>
+			<title>Dive Site detail panel : units</title>
+			<description>The detail panel only adapts the units of the values,
+				but not the values themselves when changing the preferences.
+			</description>
+			<resolution date="2011-11-05">Done.</resolution>
+		</change>
+		<change date="2011-11-05" id="68">
+			<level>change</level>
+			<title>Units in logbook informations panel</title>
+			<description>The data aren't depending on the selected units.
+			</description>
+			<resolution date="2011-11-05">Done.</resolution>
+		</change>
+		<change date="2011-11-05" id="67">
+			<level>change</level>
+			<title>Date formats</title>
+			<description>The format of the date can be choosen by the user in the
+				preferences.
+			</description>
+			<resolution date="2011-11-05">Done.</resolution>
+		</change>
+		<change date="2011-11-02" id="66">
+			<level>change</level>
+			<title>Volume unit</title>
+			<description>To fulfill some UDDF specifications, a m3 volume is
+				required.
+			</description>
+			<resolution date="2011-11-02">Done. There is no possibility to use this
+				volume as preference yet.
+			</resolution>
+		</change>
+		<change date="2011-11-03" id="65">
+			<level>change</level>
+			<title>Frame position / size</title>
+			<description>The frame should maintain the size and position from one
+				opening to another.
+			</description>
+			<resolution date="2011-11-03">Done. The parameters are saved into the
+				user preferences.
+			</resolution>
+		</change>
+		<change date="2011-11-03" id="64">
+			<level>bugfix</level>
+			<title>Material matching panel (import)</title>
+			<description>Some buggy behaviour in this panel when selecting the
+				"match" check box.
+			</description>
+			<resolution date="2011-11-03">This panel has been reviewed and a super
+				class is created to have the same behaviour for the different
+				matching panels (divers ans dive sites)
+			</resolution>
+		</change>
+		<change date="2011-10-27" id="63">
+			<level>bugfix</level>
+			<title>Revision xsl order</title>
+			<description>Revision xsl doesn't guarantee the order of the changes
+				(based on the ID number)
+			</description>
+			<resolution date="2011-10-27">done</resolution>
+		</change>
+		<change date="2011-10-26" id="62">
+			<level>change</level>
+			<title>Some enums must appear in list according to a specific order
+				(independent from the language)
+			</title>
+			<description>
+			</description>
+			<resolution date=""></resolution>
+		</change>
+		<change date="2011-10-25" id="61">
+			<level>change</level>
+			<title>keyed catalogs (enums) must appear in the alphabetical order
+				in lists
+			</title>
+			<description>
+			</description>
+			<resolution date="2011-10-25">Some are done. further adaptations can be
+				changed when encountered.
+			</resolution>
+		</change>
+		<change date="2011-10-25" id="60">
+			<level>bugfix</level>
+			<title>dive type, purpose and platform don't update when switching
+				language
+			</title>
+			<description>
+			</description>
+			<resolution date="2011-10-25">Solved</resolution>
+		</change>
+		<change date="2011-10-17" id="59">
+			<level>bugfix</level>
+			<title>Gazmix dialog</title>
+			<description>the gazmix dialog doesn't prompt anymore when editing
+				the mix (in the equipment panel of the dive)
+			</description>
+			<resolution date="2011-10-17">Solved</resolution>
+		</change>
+		<change date="2011-09-30" id="58">
+			<level>change</level>
+			<title>Search Panel</title>
+			<description>New Panel to perform some dive search following
+				criterias
+			</description>
+			<resolution date="">Search criterias are : number, platform,
+				dive type, dive purpose, dive time, depth, dive site, date, diver
+			</resolution>
+		</change>
+		<change date="2011-09-30" id="57">
+			<level>change</level>
+			<title>Material Edition</title>
+			<description>New way to edit the material of the Mat cave. Problems
+				when changing units or language.
+			</description>
+			<resolution date="2011-10-19">Material is displayed using HTML
+				rendering and edited in apart dialog
+			</resolution>
+		</change>
+	</version>
+	<version id="2.4.1">
+		<change date="2011-09-30" id="56">
+			<level>change</level>
+			<title>Building scripts</title>
+			<description>the project architecture has been a little bit reviewed
+			</description>
+			<resolution date="2011-09-30">Done.</resolution>
+		</change>
+		<change date="2011-09-30" id="55">
+			<level>change</level>
+			<title>Preferences box</title>
+			<description>the General Preferences node must be directly show the
+				panel instead of "No preference here"
+			</description>
+			<resolution date="2011-09-30">Done.</resolution>
+		</change>
+	</version>
+	<version id="2.4.0">
+		<change date="2011-08-25" id="54">
+			<level>change</level>
+			<title>Export jtb format</title>
+			<description>Uses a temp file to build the compressed archive. This
+				should happen at once without a temp folder but directly using the
+				Zip api
+			</description>
+			<resolution date="2011-08-25">Done.</resolution>
+		</change>
+		<change date="2011-08-25" id="53">
+			<level>change</level>
+			<title>Delete logbook</title>
+			<description>The possibility to delete a logbook must exist
+			</description>
+			<resolution date="2011-08-25">Done.</resolution>
+		</change>
+		<change date="2011-08-02" id="52">
+			<level>change</level>
+			<title>Logbook information panel</title>
+			<description>Create a panel with logbook useful data</description>
+			<resolution date="2011-08-02">Done, panel can be accessed via a new
+				docking panel.
+			</resolution>
+		</change>
+		<change date="2011-08-01" id="51">
+			<level>change</level>
+			<title>Update notifications</title>
+			<description>Can be useful to know whether a new version is
+				available.
+			</description>
+			<resolution date="2011-08-01">Done, but requires some extra actions on
+				the web page of the project on source forge when deploying a new
+				release.
+			</resolution>
+		</change>
+		<change date="2011-08-01" id="50">
+			<level>change</level>
+			<title>New user preferences</title>
+			<description>Some new user preferences are required: default data
+				comm interface and default dive computer
+			</description>
+			<resolution date="2011-08-01">Done.</resolution>
+		</change>
+		<change date="2011-08-01" id="50">
+			<level>bugfix</level>
+			<title>No language loaded</title>
+			<description>If the software file has a path containing white spaces,
+				it can't load the languages
+			</description>
+			<resolution date="2011-08-01">The method to load the languages has been
+				reviewed.
+			</resolution>
+		</change>
+		<change date="2011-08-01" id="49">
+			<level>change</level>
+			<title>Datacomm interface component</title>
+			<description>create a new component for the data communication with
+				the dive computer
+			</description>
+			<resolution date="2011-08-01">A new component is created and more
+				souple in case of extension.
+			</resolution>
+		</change>
+		<change date="2011-07-25" id="48">
+			<level>change</level>
+			<title>Logbook analysis</title>
+			<description>Find a way to show logbook common values (max depht,
+				cumulated dite times, etc...)
+			</description>
+			<resolution date="2011-07-25">A Dialog appears when clicking on the
+				Information button of the browser
+			</resolution>
+		</change>
+		<change date="2011-07-25" id="47">
+			<level>bugfix</level>
+			<title>Close method</title>
+			<description>Sometimes the application doesn't close properly (when
+				closing the window with the cross).
+			</description>
+			<resolution date="2011-07-25">Closing process reviewed.</resolution>
+		</change>
+		<change date="2011-07-24" id="46">
+			<level>bugfix</level>
+			<title>Import from binaries</title>
+			<description>Nothing imported when using the binaries format.
+			</description>
+			<resolution date="2011-07-24">Binaries Format wasn't treated in the
+				action.
+			</resolution>
+		</change>
+		<change date="2011-07-19" id="45">
+			<level>change</level>
+			<title>Dive sites in report</title>
+			<description>Possibility to have the dive sites in the report.
+			</description>
+			<resolution date="2011-07-19"> done</resolution>
+		</change>
+		<change date="2011-07-11" id="44">
+			<level>change</level>
+			<title>Material Listing</title>
+			<description>There must be a possibility to register all the material
+				of the diver.
+			</description>
+			<resolution date="2011-07-11"> This is done by adding a "Mat Cave"
+				where you can manage all your material. Aside this, the equipment
+				used during the dive should be a subset of the Materials, so there
+				is a reference possible from the equipment to the material. The
+				equipment holds the specific data of the referenced material coming
+				from the dive (for example: begin and end pressure in a dive tank).
+				Material that can be managed is:
+				dive tanks, dive
+				computers, fins,
+				masks, weight belts.
+			</resolution>
+		</change>
+		<change date="2011-07-11" id="43">
+			<level>change</level>
+			<title>Dive Criterias</title>
+			<description>Some criterias are required to be registered like
+				purpose of the dive.
+			</description>
+			<resolution date="2011-07-11">The criterias that can now be registered
+				are: purpose of the dive, type of dive and platform.
+			</resolution>
+		</change>
+		<change date="2011-07-11" id="42">
+			<level>change</level>
+			<title>New units</title>
+			<description>Need of other units especially for Pressure and length.
+			</description>
+			<resolution date="2011-07-11">New units added for lengths (feet) and
+				pressure (Pascal and psi)
+			</resolution>
+		</change>
+		<change date="2011-07-10" id="41">
+			<level>change</level>
+			<title>LogBook default sorting</title>
+			<description>This must be a user preference
+			</description>
+			<resolution date="2011-07-10">The default sorting is a user preference
+				(configurable in the preference panel). The property is stored in
+				the preference file and the sorting is the default one when opening
+				a logbook for the first time (only the first time)
+			</resolution>
+		</change>
+		<change date="2011-07-04" id="40">
+			<level>change</level>
+			<title>Bugs/change number in revision file</title>
+			<description>
+			</description>
+			<resolution date="2011-07-04">The number of bugfixes/changes are now
+				shown in the revision screen (html)
+			</resolution>
+		</change>
+		<change date="2011-07-04" id="39">
+			<level>change</level>
+			<title>Dive Rating</title>
+			<description>
+			</description>
+			<resolution date="2011-07-04">A rating between 0 and 10 is possible
+			</resolution>
+		</change>
+	</version>
+	<version id="2.3.1">
+		<change date="2011-07-04" id="38">
+			<level>bugfix</level>
+			<title>Date Component for dive</title>
+			<description>New date component doesn't register the date properly.
+			</description>
+			<resolution date="2011-07-04">Solved by adding an ActionListener on the
+				component instead of a PropertyChangeListener.
+			</resolution>
+		</change>
+	</version>
+	<version id="2.3.0">
+		<change date="2011-06-28" id="37">
+			<level>change</level>
+			<title>Documents for Dive sites</title>
+			<description>Dive sites need sometimes extra documents (picture for
+				example)
+			</description>
+			<resolution date="2011-06-28">Documents can be added to a dive site
+				using the dive site manager. Those Documents are also available in
+				the dive site detail panel.
+			</resolution>
+		</change>
+
+		<change date="2011-06-28" id="36">
+			<level>change</level>
+			<title>Import Wizard</title>
+			<description>The import tool must be in the form of a wizard.
+			</description>
+			<resolution date="2011-06-28">The import wizard has been totally
+				reviewed. This is the biggest change of the version. Supported
+				formats are jtb (proprietary), jtbb (proprietary format for dive
+				computer stream sequence), UDDF (3.0.0), UDCF.
+			</resolution>
+		</change>
+
+		<change date="2011-06-28" id="35">
+			<level>change</level>
+			<title>3 new gazes</title>
+			<description>Argon, Neon and Hydrogen have been added.
+			</description>
+			<resolution date="2011-06-28">Done.
+			</resolution>
+		</change>
+		<change date="2011-06-21" id="34">
+			<level>change</level>
+			<title>Save before exit</title>
+			<description>When closing the application, a dialog must be prompted
+				to tell wheter the modified dives must be saved or not.
+			</description>
+			<resolution date="2011-06-21">Done.
+			</resolution>
+		</change>
+		<change date="2011-06-11" id="33">
+			<level>bugfix</level>
+			<title>Console log level</title>
+			<description>The console doesn't display the the current level of
+				the
+				logger
+			</description>
+			<resolution date="2011-06-14">Done.
+			</resolution>
+		</change>
+		<change date="2011-06-11" id="32">
+			<level>change</level>
+			<title>dive tank gaz mix</title>
+			<description>An indication of volume % should be present to know why
+				the OK button is enabled or disabled.
+			</description>
+			<resolution date="2011-06-11">Done. Volume % is present, in red when
+				!=
+				100% (otherwise in green).
+			</resolution>
+		</change>
+		<change date="2011-06-10" id="33">
+			<level>bugfix</level>
+			<title>dive tank gaz mix</title>
+			<description>When a change occurs in the gazmix of the dive tank
+				panel, it ain't repercuted in the model.
+			</description>
+			<resolution date="2011-06-10">Done. Model is adapted when a change
+				occurs in the GUI.
+			</resolution>
+		</change>
+		<change date="2011-06-03" id="32">
+			<level>change</level>
+			<title>Report</title>
+			<description>Report must contain the url of the software anywhere
+			</description>
+			<resolution date="2011-06-03">Done. Url is under the print date on
+				each
+				page.
+			</resolution>
+		</change>
+		<change date="2011-06-03" id="31">
+			<level>change</level>
+			<title>Dive max depth</title>
+			<description>The model isn't coherent as the profile depths are
+				negative and the max depth of the dive is positive.
+			</description>
+			<resolution date="2011-06-03">Model has been modified to automatically
+				set the depth negative when using the setter. Graphical component
+				has been modified consequently; UDCF import and export too
+			</resolution>
+		</change>
+		<change date="2011-06-01" id="30">
+			<level>bugfix</level>
+			<title>UDCF export</title>
+			<description>Problem with the gaz mix: 1.composition comparison is
+				not working properly 2.problem with the decimal of the %age of the
+				gazes.
+			</description>
+			<resolution date="2011-06-01">2 problems fixed.</resolution>
+		</change>
+		<change date="2011-06-01" id="30">
+			<level>bugfix</level>
+			<title>Dive Document Slideshow</title>
+			<description>Nullpointer when the document has been added to the
+				dive
+				and not saved yet.
+			</description>
+			<resolution date="2011-06-01">The used SlideWalker now checks wheter
+				the document has a not null content. If so, it loads the content
+				using the logbookmanagerfacade.
+			</resolution>
+		</change>
+		<change date="2011-05-29" id="29">
+			<level>bugfix</level>
+			<title>Update Logbook data</title>
+			<description>Nullpointer in case of update a logbook without a diver
+				(owner).
+			</description>
+			<resolution date="2011-05-29">This bug is fixed</resolution>
+		</change>
+
+		<change date="2011-05-27" id="28">
+			<level>bugfix</level>
+			<title>Stat panel, order of lists</title>
+			<description>In the stat panel, the lists (years, divers, divesites)
+				are not sorted naturally.
+			</description>
+			<resolution date="2011-05-27">This bug is fixed</resolution>
+		</change>
+
+		<change date="2011-05-25" id="27">
+			<level>bugfix</level>
+			<title>Divesite chooser</title>
+			<description>The dive site chooser component must have the same
+				behaviour as the diver chooser (enter in search field, dialog that
+				opens with good criterias, etc.)
+			</description>
+			<resolution date="2011-05-25">This bug is fixed</resolution>
+		</change>
+
+		<change date="2011-05-25" id="26">
+			<level>bugfix</level>
+			<title>Dive Document</title>
+			<description>When a document has a problem with content loading, it
+				can't be removed properly from the dive.
+			</description>
+			<resolution date="2011-05-25">This bug is fixed</resolution>
+		</change>
+
+		<change date="2011-05-10" id="25">
+			<level>change</level>
+			<title>Export Wizard</title>
+			<description>The export tool must be in the form of a wizard.
+			</description>
+			<resolution date="2011-06-28">The export wizard has been totally
+				reviewed. Supported formats are jtb (proprietary), UDDF (3.0.0),
+				UDCF.
+			</resolution>
+		</change>
+
+		<change date="2011-05-19" id="24">
+			<level>change</level>
+			<title>Stats Panel</title>
+			<description>The stat panel must be docked as the other ones.
+			</description>
+			<resolution date="2011-05-19">The stat panel doesn't prompt in a
+				JDialog anymore but appears in the docking frames aside the
+				document
+				editor. The Observer pattern is implemented to be notified of what
+				happens in the model.
+			</resolution>
+		</change>
+
+		<change date="2011-04-29" id="23">
+			<level>change</level>
+			<title>Current Dive deletion</title>
+			<description>The possibility to delete the current dive must exist.
+			</description>
+			<resolution date="2011-04-29">Done. A new button has been created to
+				do
+				it. Attention, the button has the icon of the previous "cancel
+				changes" icon. So now the "Cancel changes" button has a new icon
+				too
+				(eraser)
+			</resolution>
+		</change>
+
+
+
+		<change date="2011-04-29" id="22">
+			<level>bugfix</level>
+			<title>Browser Selection Behaviour</title>
+			<description>The behaviour of the mouse clicks (left and right)
+				isn't
+				fully correct and must be reviewed for some actions (when
+				right click
+				near a node in the tree)
+			</description>
+			<resolution date="2011-04-29">done</resolution>
+		</change>
+		<change date="2011-04-29" id="21">
+			<level>change</level>
+			<title>Multiple Deletion</title>
+			<description>The possibility to delete more dives at once must exist
+			</description>
+			<resolution date="2011-04-29">Done. With a beautiful dive selection
+				dialog.
+			</resolution>
+		</change>
+	</version>
+
+	<version id="2.2.0">
+		<change date="2011-04-03" id="20">
+			<level>change</level>
+			<title>Logbook Selection</title>
+			<description>When opening a logbook, the selection should be
+				possible
+				by pressing ENTER on a selected line.
+			</description>
+			<resolution date="2011-04-03">done</resolution>
+		</change>
+		<change date="2011-03-13" id="19">
+			<level>change</level>
+			<title>Dive profile editor</title>
+			<description>A tool for encoding the dive profile is needed.
+			</description>
+			<resolution date="2011-04-03">A basic editor is now present. The
+				profile can be edited by filling a table.
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="18">
+			<level>change</level>
+			<title>Dive site: Map</title>
+			<description>A map must be accessible if the dive site has
+				coordinates.
+			</description>
+			<resolution date="2011-01-01">The map is available in the dive site
+				detail panel. Open street is used in a specific panel. Also a web
+				page using google maps can be opened in the default browser. For
+				both maps, an internet connection must be available.
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="17">
+			<level>change</level>
+			<title>Home Panel with basic menus</title>
+			<description></description>
+			<resolution date="2011-02-22">New Home panel available. This is the
+				basic panel when no layout is set.
+			</resolution>
+		</change>
+		<change date="2011-03-21" id="16">
+			<level>bugfix</level>
+			<title>Profile in report</title>
+			<description>Some warnings weren't displayed in the image of the
+				profile in the report. Colors must also match the graph in the
+				editor.
+			</description>
+			<resolution date="2011-03-21"></resolution>
+		</change>
+		<change date="2011-01-01" id="15">
+			<level>change</level>
+			<title>List of revisions</title>
+			<description>A better list of changes and bugfixes must be provided.
+			</description>
+			<resolution date="2011-02-13">XML + XSL has been used to display the
+				revision list for all the versions. The layout is poor, but there
+				is
+				no need for a better one for the moment
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="14">
+			<level>change</level>
+			<title>Position index of material in a list</title>
+			<description></description>
+			<resolution date="2011-03-12">The order index can be set on an
+				equipment and is modifiable in the equipment tab. The index take in
+				count the other indexes.
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="13">
+			<level>change</level>
+			<title>Dive tank equipment : start/finish pressure + volume : set
+				units
+			</title>
+			<description></description>
+			<resolution date="2011-02-17">
+				1. Dive tanks have now pressure in
+				double
+				instead of int &lt;br /&gt;
+				2. Units on the components are
+				automatically updated when switching
+				the units in the preferences.
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="12">
+			<level>change</level>
+			<title>Use a class that notifies all the UI events like selecting a
+				diver or a divesite.
+			</title>
+			<description></description>
+			<resolution date="2011-04-03">This can be considered as done, but
+				further evolutions will certainly come with new requirements.
+			</resolution>
+		</change>
+
+		<change date="2011-01-01" id="11">
+			<level>change</level>
+			<title>include dive pictures in report if checked in the report
+				dialog
+			</title>
+			<description></description>
+			<resolution date="2011-04-03">done</resolution>
+		</change>
+		<change date="2011-03-21" id="10">
+			<level>bugfix</level>
+			<title>Deco entries in profile not visible</title>
+			<description>The deco entries series in the graph was filled with
+				the
+				deco ceiling warning data.
+			</description>
+			<resolution date="2011-03-21"></resolution>
+		</change>
+		<change date="2011-01-01" id="9">
+			<level>change</level>
+			<title>document viewer detachable / slide show</title>
+			<description></description>
+			<resolution date="2011-04-21">A "Slide show" dialog is implemented and
+				accessible from the documents of the dives
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="8">
+			<level>change</level>
+			<title>export into standard format (UDDF? UDCF? DL7?)</title>
+			<description></description>
+			<resolution date="2011-04-26">Implemented UDDF and UDCF but no
+				possibility to really test it... some bugs can appear.
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="7">
+			<level>change</level>
+			<title>Logging Console</title>
+			<description>The backround of the level combobox has same color as
+				the console
+			</description>
+			<resolution date="2011-01-01">done</resolution>
+		</change>
+		<change date="2011-03-21" id="6">
+			<level>bugfix</level>
+			<title>Tasks pane</title>
+			<description>When the task pane is opened and a task is running,
+				this
+				last must be diplayed.
+			</description>
+			<resolution date="2011-03-21">Panel filled in the constructor
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="5">
+			<level>change</level>
+			<title>Docking panel loading</title>
+			<description>The dockable panels must be instantiated only if
+				necessary and not all of them at the beginning.
+			</description>
+			<resolution date="2011-01-01">Resolved by changing the docking
+				framework used.
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="4">
+			<level>change</level>
+			<title>Dive site: geolocalisation (coordinates)</title>
+			<description>A dive site must have coordinates</description>
+			<resolution date="2011-01-01">Coordinates can now be saved for a
+				divesite.
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="3">
+			<level>change</level>
+			<title>Detail panel for diver</title>
+			<description></description>
+			<resolution date="2011-01-01">The panel is very basic, but don't need
+				to display more for the moment
+			</resolution>
+		</change>
+		<change date="2011-01-01" id="3">
+			<level>bugfix</level>
+			<title>Console: copy to clipboard copies the real message, not the
+				toString() of the log event
+			</title>
+			<description></description>
+			<resolution date="2011-01-01"></resolution>
+		</change>
+
+		<change date="2011-01-01" id="2">
+			<level>change</level>
+			<title>Dive gazes panel</title>
+			<description>button "Edit" ==> change icon</description>
+			<resolution date="2011-01-01">done</resolution>
+		</change>
+		<change date="2011-01-01" id="2">
+			<level>bugfix</level>
+			<title>layout for the name of logbook in browser modified</title>
+			<description></description>
+			<resolution date="2011-01-01"></resolution>
+		</change>
+		<change date="2011-01-01" id="1">
+			<level>bugfix</level>
+			<title>translation of JTables when switching language</title>
+			<description></description>
+			<resolution date="2011-01-01"></resolution>
+		</change>
+		<change date="2011-01-01" id="1">
+			<level>change</level>
+			<title>Dive gazes panel</title>
+			<description>smaller width in dive tank panel</description>
+			<resolution date="2011-01-01">done</resolution>
+		</change>
+
+	</version>
+
+	<version id="2.1.2">
+		<change date="2010-12-01">
+			<level>change</level>
+			<title>all</title>
+			<description>translations for "palanquee"
+				merge dive site dialog has
+				some translation problems
+				libraries for linux 64 bits integrated
+				into
+				the project (rxtx)
+			</description>
+			<resolution date="2011-01-01"></resolution>
+		</change>
+	</version>
+
+	<version id="2.1.1">
+		<change date="2010-11-01">
+			<level>change</level>
+			<title>all</title>
+			<description>Run application under open_jdk JRE. There's a problem
+				using the Wizard framework.
+			</description>
+			<resolution date="2011-01-01"></resolution>
+		</change>
+	</version>
+
+	<version id="2.1.0">
+		<change date="2010-11-01">
+			<level>change</level>
+			<title>all</title>
+			<description>
+				panel names shorter
+				manage divelocation picture (merge
+				divelocations)
+				integrate a picture for divelocation (management
+				part)
+				hour when importing a dive : bug?
+				delete dive with id -1:
+				doesn't work
+				dive gazes component
+				material: save, update, ...
+				user
+				preference :
+				length unit
+				tree for equipment
+				granularity for
+				save/update : dive? or
+				logbook?
+				cancel edition of a dive
+				logbook
+				metadata => save
+				add equipment
+				report: problem with some titles
+				report: profile surround with border
+				layout profile panel
+				alignments
+				labels dive editor
+				icones merge dive /
+				merge diver
+				user preference
+				change persistency type (configuration)
+				report: add saturation index
+				after dive
+				file selectionchooser: better
+				code
+				stats : colors
+				print
+				report: choose language
+				merge divelocation
+				merge divers
+				rapport:
+				comment est répété si palanquée est splittée
+				nouvelle plongée: date
+				pas réinitialisée
+				rapport: traduction de
+				"divers"
+				rapport: palanquée
+				est splitée
+				Ctrl + S : action SAVE
+				tab: save
+				before closing.
+				Automatic language in function of bundles
+				options
+				import -
+				auto-number
+				delete dive
+				translate all that remains (especially
+				tables)
+				wizard for DB configuration
+				dive gazes
+				dive profile
+				table for
+				dive location
+				table for Diver
+				dive location chooser
+				diver chooser :
+				first and last name selection
+				renderer for dives in the browser
+			</description>
+			<resolution date="2011-01-01"></resolution>
+		</change>
+	</version>
+
+</versions>
