@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>be.vds.jtbdive</groupId>
+		<artifactId>jtbdivelogbook-application</artifactId>
+		<version>2.8.0</version>
+		<relativePath>../jtbdivelogbook-application</relativePath>
+	</parent>
+	<packaging>jar</packaging>
+	<artifactId>jtbdivelogbook-client</artifactId>
+	<name>jtbdivelogbook-client</name>
+
+	<properties>
+		<jasperreportsGroupId>net.sf.jasperreports</jasperreportsGroupId>
+		<jasperreportsVersion>5.0.0</jasperreportsVersion>
+	</properties>
+
+	<dependencies>
+		<!-- ========= Inhouse Components =========== -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jtbdivelogbook-persistence-xml</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>be.vds.jtb</groupId>
+			<artifactId>jtbwizard</artifactId>
+			<version>1.1.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>be.vds.jtb</groupId>
+			<artifactId>jtbswing</artifactId>
+			<version>1.4.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>be.smd</groupId>
+			<artifactId>i18n</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<!-- ========= Maven Known Components =========== -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.swinglabs.swingx</groupId> -->
+		<!-- <artifactId>swingx-all</artifactId> -->
+		<!-- <version>1.6.3</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.swinglabs.swingx</groupId>
+			<artifactId>swingx-all</artifactId>
+			<version>1.6.5</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.swinglabs</groupId> -->
+		<!-- <artifactId>swingx-ws</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- </dependency> -->
+		<!-- Graphics framwork -->
+		<dependency>
+			<groupId>org.jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.0.14</version>
+		</dependency>
+		<!-- Reports framwork -->
+		<dependency>
+			<groupId>${jasperreportsGroupId}</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>${jasperreportsVersion}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>jfree</groupId>
+					<artifactId>jfreechart</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jfree</groupId>
+					<artifactId>jcommon</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Excel and other MS doc framwork -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.7</version>
+		</dependency>
+		<!-- XHTML rendering framwork : STILL USED ??? -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.xhtmlrenderer</groupId> -->
+		<!-- <artifactId>core-renderer</artifactId> -->
+		<!-- <version>R8pre2</version> -->
+		<!-- </dependency> -->
+		<!-- ToolTips framework with ballons : NOT USED YET!!! -->
+		<dependency>
+			<groupId>net.java.balloontip</groupId>
+			<artifactId>balloontip</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
+		<!-- ========= Maven Unknown Components =========== -->
+		<dependency>
+			<groupId>org.rxtx</groupId>
+			<artifactId>rxtx</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.dockingframes</groupId>
+			<artifactId>docking-frames-common</artifactId>
+			<version>1.1.2-P8c</version>
+		</dependency>
+		<dependency>
+			<groupId>org.dockingframes</groupId>
+			<artifactId>docking-frames-common</artifactId>
+			<version>1.1.2-P8c</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org</groupId> -->
+		<!-- <artifactId>japura</artifactId> -->
+		<!-- <version>1.12.4</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>eu.hansolo</groupId>
+			<artifactId>SteelSeries</artifactId>
+			<version>3.9.22</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.pushingpixel</groupId> -->
+		<!-- <artifactId>trident</artifactId> -->
+		<!-- <version>1.3</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.openstreetmap.gui</groupId>
+			<artifactId>JMapViewer</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<!-- <resource> <directory>src/main/resources</directory> <filtering>true</filtering> 
+				<excludes> <exclude>**/resources/images/**</exclude> <exclude>**/*.jrxml</exclude> 
+				</excludes> </resource> As the images were excluded above, we have to include 
+				them setting the filter to false -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>**/images/**</exclude>
+					<exclude>**/*.jrxml</exclude>
+					<exclude>**/log4j.properties</exclude>
+					<!-- <exclude>**/*.jasper</exclude> -->
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>**/images/**</include>
+					<include>**/log4j.properties</include>
+				</includes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>false</filtering>
+			</testResource>
+		</testResources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jasperreports-maven-plugin</artifactId>
+				<!-- <version>1.0-beta-2</version> -->
+				<configuration>
+					<sourceDirectory>./src/main/resources/resources/reports</sourceDirectory>
+					<outputDirectory>${project.build.directory}/classes/resources/reports</outputDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>compile-reports</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>${jasperreportsGroupId}</groupId>
+						<artifactId>jasperreports</artifactId>
+						<version>${jasperreportsVersion}</version>
+					</dependency>
+
+					<dependency>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+						<version>1.2.13</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
+

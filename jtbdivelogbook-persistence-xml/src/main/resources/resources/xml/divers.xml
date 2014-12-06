@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<divers>
+  <diver id="1">
+    <firstname>Laurent</firstname>
+    <lastname>Joppart</lastname>
+  </diver>
+  <diver id="2">
+    <firstname>Ralph</firstname>
+    <lastname />
+  </diver>
+  <diver id="3">
+    <firstname>Brismé</firstname>
+    <lastname>Serge</lastname>
+  </diver>
+  <diver id="4">
+    <firstname>Gäétan</firstname>
+    <lastname />
+  </diver>
+  <diver id="5">
+    <firstname>Terry</firstname>
+    <lastname />
+  </diver>
+  <diver id="6">
+    <firstname>Corentin</firstname>
+    <lastname />
+  </diver>
+  <diver id="7">
+    <firstname>Sylvie</firstname>
+    <lastname>Van de Zande</lastname>
+  </diver>
+  <diver id="8">
+    <firstname>Quentin</firstname>
+    <lastname>Lycops</lastname>
+  </diver>
+  <diver id="9">
+    <firstname>Livio</firstname>
+    <lastname>Grisoni</lastname>
+  </diver>
+  <diver id="10">
+    <firstname>Roger</firstname>
+    <lastname>Moise</lastname>
+  </diver>
+  <diver id="11">
+    <firstname>Christophe</firstname>
+    <lastname />
+  </diver>
+  <diver id="12">
+    <firstname>Grégory</firstname>
+    <lastname />
+  </diver>
+  <diver id="13">
+    <firstname>Nathalie</firstname>
+    <lastname />
+  </diver>
+  <diver id="14">
+    <firstname>Jean-Marc</firstname>
+    <lastname />
+  </diver>
+  <diver id="15">
+    <firstname>Marc</firstname>
+    <lastname>Lycops</lastname>
+  </diver>
+  <diver id="16">
+    <firstname>Marie</firstname>
+    <lastname>Joppart</lastname>
+  </diver>
+  <diver id="17">
+    <firstname>Angelo</firstname>
+    <lastname>Anselmo</lastname>
+  </diver>
+  <diver id="18">
+    <firstname>Frédéric</firstname>
+    <lastname>Pieri</lastname>
+  </diver>
+  <diver id="19">
+    <firstname>Marie-Lune</firstname>
+    <lastname />
+  </diver>
+  <diver id="20">
+    <firstname>Claude</firstname>
+    <lastname>VanEmelrijk</lastname>
+  </diver>
+  <diver id="21">
+    <firstname>Diran</firstname>
+    <lastname />
+  </diver>
+  <diver id="22">
+    <firstname>Florence</firstname>
+    <lastname>Petit</lastname>
+  </diver>
+  <diver id="23">
+    <firstname>Roger</firstname>
+    <lastname>Dekoster</lastname>
+  </diver>
+  <diver id="24">
+    <firstname>Laurent</firstname>
+    <lastname>Joppart</lastname>
+  </diver>
+  <diver id="25">
+    <firstname>Ralph</firstname>
+    <lastname />
+  </diver>
+  <diver id="26">
+    <firstname>Brismé</firstname>
+    <lastname>Serge</lastname>
+  </diver>
+  <diver id="27">
+    <firstname>Gäétan</firstname>
+    <lastname />
+  </diver>
+  <diver id="28">
+    <firstname>Terry</firstname>
+    <lastname />
+  </diver>
+  <diver id="29">
+    <firstname>Corentin</firstname>
+    <lastname />
+  </diver>
+  <diver id="30">
+    <firstname>Sylvie</firstname>
+    <lastname>Van de Zande</lastname>
+  </diver>
+  <diver id="31">
+    <firstname>Quentin</firstname>
+    <lastname>Lycops</lastname>
+  </diver>
+  <diver id="32">
+    <firstname>Livio</firstname>
+    <lastname>Grisoni</lastname>
+  </diver>
+  <diver id="33">
+    <firstname>Roger</firstname>
+    <lastname>Moise</lastname>
+  </diver>
+  <diver id="34">
+    <firstname>Christophe</firstname>
+    <lastname />
+  </diver>
+  <diver id="35">
+    <firstname>Grégory</firstname>
+    <lastname />
+  </diver>
+  <diver id="36">
+    <firstname>Nathalie</firstname>
+    <lastname />
+  </diver>
+  <diver id="37">
+    <firstname>Jean-Marc</firstname>
+    <lastname />
+  </diver>
+  <diver id="38">
+    <firstname>Marc</firstname>
+    <lastname>Lycops</lastname>
+  </diver>
+  <diver id="39">
+    <firstname>Marie</firstname>
+    <lastname>Joppart</lastname>
+  </diver>
+  <diver id="40">
+    <firstname>Angelo</firstname>
+    <lastname>Anselmo</lastname>
+  </diver>
+  <diver id="41">
+    <firstname>Frédéric</firstname>
+    <lastname>Pieri</lastname>
+  </diver>
+  <diver id="42">
+    <firstname>Marie-Lune</firstname>
+    <lastname />
+  </diver>
+  <diver id="43">
+    <firstname>Claude</firstname>
+    <lastname>VanEmelrijk</lastname>
+  </diver>
+  <diver id="44">
+    <firstname>Diran</firstname>
+    <lastname />
+  </diver>
+  <diver id="45">
+    <firstname>Florence</firstname>
+    <lastname>Petit</lastname>
+  </diver>
+  <diver id="46">
+    <firstname>Roger</firstname>
+    <lastname>Dekoster</lastname>
+  </diver>
+</divers>
+

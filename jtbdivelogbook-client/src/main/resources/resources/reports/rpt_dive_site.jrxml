@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_dive_simple" pageWidth="595" pageHeight="842" columnWidth="373" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/gautier/workspace/WS-JTBDiveLogBook/jtbdivelogbook-client/src/main/resources/resources/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="locale" class="java.util.Locale">
+		<defaultValueExpression><![CDATA[be.smd.i18n.I18nResourceManager.sharedInstance().getDefaultLocale()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="lengthUnit" class="be.vds.jtbdive.core.core.units.LengthUnit">
+		<defaultValueExpression><![CDATA[be.vds.jtbdive.core.core.units.LengthUnit.METER]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportHelper" class="be.vds.jtbdive.client.util.ReportHelper"/>
+	<parameter name="includeDiveSitesDocuments" class="java.lang.Boolean"/>
+	<parameter name="documentType" class="java.lang.String"/>
+	<field name="documents" class="java.util.List"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="depth" class="java.lang.Double"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="coordinates" class="be.vds.jtbdive.core.core.Coordinates"/>
+	<field name="altitude" class="java.lang.Double"/>
+	<field name="diveSiteType" class="be.vds.jtbdive.core.core.catalogs.DiveSiteType"/>
+	<variable name="i18n" class="be.smd.i18n.I18nResourceManager">
+		<variableExpression><![CDATA[be.smd.i18n.I18nResourceManager.sharedInstance()]]></variableExpression>
+		<initialValueExpression><![CDATA[be.smd.i18n.I18nResourceManager.sharedInstance()]]></initialValueExpression>
+	</variable>
+	<variable name="showDocs" class="java.lang.Boolean">
+		<variableExpression><![CDATA[$F{documents} != null && $F{documents}.size()>0 &&
+$P{includeDiveSitesDocuments}]]></variableExpression>
+	</variable>
+	<group name="divesitedocs">
+		<groupExpression><![CDATA["site_"+$F{id}]]></groupExpression>
+		<groupFooter>
+			<band height="35">
+				<printWhenExpression><![CDATA[$V{showDocs}]]></printWhenExpression>
+				<elementGroup>
+					<rectangle radius="10">
+						<reportElement key="documentRectangle" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Transparent" x="20" y="5" width="515" height="25" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true">
+							<printWhenExpression><![CDATA[$V{showDocs}]]></printWhenExpression>
+						</reportElement>
+					</rectangle>
+					<subreport>
+						<reportElement positionType="Float" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="33" y="21" width="491" height="9" isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[$V{showDocs}]]></printWhenExpression>
+						</reportElement>
+						<subreportParameter name="documentType">
+							<subreportParameterExpression><![CDATA["divesite"]]></subreportParameterExpression>
+						</subreportParameter>
+						<subreportParameter name="locale">
+							<subreportParameterExpression><![CDATA[$P{locale}]]></subreportParameterExpression>
+						</subreportParameter>
+						<subreportParameter name="reportHelper">
+							<subreportParameterExpression><![CDATA[$P{reportHelper}]]></subreportParameterExpression>
+						</subreportParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{documents})]]></dataSourceExpression>
+						<subreportExpression class="java.io.InputStream"><![CDATA[be.vds.jtbdive.client.util.ResourceManager.getInstance().getReportAsInputStream("rpt_documents.jasper")]]></subreportExpression>
+					</subreport>
+					<textField isBlankWhenNull="true">
+						<reportElement x="352" y="6" width="172" height="15" forecolor="#808080">
+							<printWhenExpression><![CDATA[$V{showDocs}]]></printWhenExpression>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font isBold="false" isItalic="true"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$V{i18n}.getString("documents", $P{locale})]]></textFieldExpression>
+					</textField>
+				</elementGroup>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="10" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="70" splitType="Prevent">
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement x="10" y="0" width="525" height="20" backcolor="#212149"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+				<image scaleImage="RealSize" hAlign="Center" vAlign="Middle">
+					<reportElement x="20" y="0" width="20" height="20"/>
+					<imageExpression class="java.awt.Image"><![CDATA[be.vds.jtbdive.client.util.ResourceManager.getInstance().getImage("document16.png")]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="true">
+					<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="53" y="0" width="321" height="20" forecolor="#FEFEFE"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup/>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement mode="Transparent" x="20" y="24" width="125" height="35"/>
+				</rectangle>
+				<textField>
+					<reportElement x="27" y="27" width="114" height="15"/>
+					<textElement textAlignment="Left">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[be.vds.jtbdive.core.utils.StringManipulator.
+    formatFixedDecimalNumber(
+      be.vds.jtbdive.client.core.UnitsAgent.getInstance().convertLengthFromModel($F{depth}.doubleValue(),$P{lengthUnit} )
+      , be.vds.jtbdive.client.view.utils.UIAgent.PRECISION_DEPTH, be.vds.jtbdive.client.view.utils.UIAgent.NUMBER_DECIMAL_CHAR)
+    + " "+$P{lengthUnit}.getSymbol()]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="53" y="42" width="88" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{i18n}.getString("depth", $P{locale})]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement mode="Transparent" x="150" y="24" width="255" height="35"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="157" y="27" width="238" height="15"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{coordinates}.toString()]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="231" y="41" width="168" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{i18n}.getString("coordinates", $P{locale})]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup/>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement mode="Transparent" x="410" y="24" width="125" height="35"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement x="436" y="41" width="94" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{i18n}.getString("altitude", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="416" y="27" width="100" height="15"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[be.vds.jtbdive.core.utils.StringManipulator.
+    formatFixedDecimalNumber(
+      be.vds.jtbdive.client.core.UnitsAgent.getInstance().convertLengthFromModel($F{altitude}.doubleValue(),$P{lengthUnit} )
+      , be.vds.jtbdive.client.view.utils.UIAgent.PRECISION_DEPTH, be.vds.jtbdive.client.view.utils.UIAgent.NUMBER_DECIMAL_CHAR)
+    + " "+$P{lengthUnit}.getSymbol()]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup/>
+			<elementGroup/>
+			<elementGroup/>
+			<elementGroup/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="374" y="0" width="150" height="20" forecolor="#CCCCFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{i18n}.getString($F{diveSiteType}.getKey(), $P{locale})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

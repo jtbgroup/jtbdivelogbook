@@ -1,0 +1,4 @@
+<!ELEMENT divers ( diver ) >
+	<!ELEMENT diver ( firstname, lastname ) >
+		<!ELEMENT fisrtname ( #PCDATA ) >
+		<!ELEMENT lastname ( #PCDATA ) >

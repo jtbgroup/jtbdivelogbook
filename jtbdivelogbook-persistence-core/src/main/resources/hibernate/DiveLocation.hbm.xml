@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="be.vds.jtbdive.core.model.DiveLocation"
+		table="divelocations">
+		<id name="id" column="id" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="depth" type="double" column="depth" />
+		<property name="name" column="name" />
+
+		<set name="addresses" table="divelocations_addresses"
+			cascade="all" lazy="false">
+			<key column="divelocation_id" />
+			<one-to-many class="be.vds.jtbdive.core.model.Address" />
+		</set>
+	</class>
+
+</hibernate-mapping>

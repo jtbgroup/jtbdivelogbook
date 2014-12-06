@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>be.vds.jtbdive</groupId>
+		<artifactId>jtbdivelogbook-global</artifactId>
+		<version>2.8.0</version>
+		<relativePath>../jtbdivelogbook-global</relativePath>
+	</parent>
+
+	<packaging>pom</packaging>
+	<artifactId>jtbdivelogbook-application-archiver</artifactId>
+	<name>jtbdivelogbook-application-archiver</name>
+	<description>This module builds the application. </description>
+	<url>http://sourceforge.net/projects/jtbdivelogbook/</url>
+
+
+	<properties>
+		<buildRootDirectory>${basedir}/build</buildRootDirectory>
+		<buildApplicationDir>${buildRootDirectory}/jtbdivelogbook-${project.version}</buildApplicationDir>
+		<mainClass>be.vds.jtbdive.client.launch.Launcher</mainClass>
+	</properties>
+
+	<modules>
+		<module>../jtbdivelogbook-application</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>jtbdivelogbook-client</artifactId>
+			<version>${project.version}</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-standalone</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${buildApplicationDir}/lib
+							</outputDirectory>
+							<overWriteReleases>true</overWriteReleases>
+							<overWriteSnapshots>
+								true
+							</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<excludeGroupIds>junit</excludeGroupIds>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<!-- here the phase you need -->
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${buildApplicationDir}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<filtering>false</filtering>
+									<excludes>
+										<exclude>run.cmd</exclude>
+										<exclude>run.sh</exclude>
+									</excludes>
+								</resource>
+								<resource>
+									<directory>src/main/resources</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>run.cmd</include>
+										<include>run.sh</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>

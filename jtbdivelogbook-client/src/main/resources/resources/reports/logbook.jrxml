@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="logbook" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="389"/>
+	<import value="be.vds.jtbdive.client.util.ResourceManager"/>
+	<import value="be.vds.jtbdive.core.core.catalogs.DiverRole"/>
+	<parameter name="logbook" class="be.vds.jtbdive.core.core.LogBook"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/gautier/workspace/WS-JTBDiveLogBook/jtbdivelogbook-client/src/main/resources/resources/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="locale" class="java.util.Locale">
+		<defaultValueExpression><![CDATA[be.smd.i18n.I18nResourceManager.sharedInstance().getDefaultLocale()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dives" class="java.util.List"/>
+	<parameter name="includeDiveProfile" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[new java.lang.Boolean(true)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="lengthUnit" class="be.vds.jtbdive.core.core.units.LengthUnit">
+		<defaultValueExpression><![CDATA[be.vds.jtbdive.core.core.units.LengthUnit.METER]]></defaultValueExpression>
+	</parameter>
+	<parameter name="temperatureUnit" class="be.vds.jtbdive.core.core.units.TemperatureUnit">
+		<defaultValueExpression><![CDATA[be.vds.jtbdive.core.core.units.TemperatureUnit.CELSIUS]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportHelper" class="be.vds.jtbdive.client.util.ReportHelper"/>
+	<parameter name="includeDiveSites" class="java.lang.Boolean"/>
+	<parameter name="includeDiveSitesDocuments" class="java.lang.Boolean"/>
+	<parameter name="includeDiveDocuments" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[new Boolean(true)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="includeDiveDetails" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[new java.lang.Boolean(true)]]></defaultValueExpression>
+	</parameter>
+	<variable name="i18n" class="be.smd.i18n.I18nResourceManager">
+		<variableExpression><![CDATA[be.smd.i18n.I18nResourceManager.sharedInstance()]]></variableExpression>
+		<initialValueExpression><![CDATA[be.smd.i18n.I18nResourceManager.sharedInstance()]]></initialValueExpression>
+	</variable>
+	<group name="DiveGroup">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="20" splitType="Immediate">
+				<subreport>
+					<reportElement key="subreport-1" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="0" y="0" width="555" height="20"/>
+					<subreportParameter name="includeDiveProfile">
+						<subreportParameterExpression><![CDATA[$P{includeDiveProfile}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="includeDiveDocuments">
+						<subreportParameterExpression><![CDATA[$P{includeDiveDocuments}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="temperatureUnit">
+						<subreportParameterExpression><![CDATA[$P{temperatureUnit}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="locale">
+						<subreportParameterExpression><![CDATA[$P{locale}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="reportHelper">
+						<subreportParameterExpression><![CDATA[$P{reportHelper}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="lengthUnit">
+						<subreportParameterExpression><![CDATA[$P{lengthUnit}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="includeDiveDetails">
+						<subreportParameterExpression><![CDATA[$P{includeDiveDetails}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{dives})]]></dataSourceExpression>
+					<subreportExpression><![CDATA[be.vds.jtbdive.client.util.ResourceManager.getInstance().getReportAsInputStream("rpt_dive_simple.jasper")]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="DiveSiteGroup" isStartNewPage="true">
+		<groupExpression><![CDATA[$V{PAGE_NUMBER}]]></groupExpression>
+		<groupHeader>
+			<band height="48" splitType="Immediate">
+				<printWhenExpression><![CDATA[$P{includeDiveSites}]]></printWhenExpression>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="0" y="8" width="555" height="20">
+						<printWhenExpression><![CDATA[$P{includeDiveSites}]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font size="12" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("divesites", $P{locale})]]></textFieldExpression>
+				</textField>
+				<subreport>
+					<reportElement key="subreport-1" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="0" y="28" width="555" height="20">
+						<printWhenExpression><![CDATA[$P{includeDiveSites}]]></printWhenExpression>
+					</reportElement>
+					<subreportParameter name="locale">
+						<subreportParameterExpression><![CDATA[$P{locale}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="reportHelper">
+						<subreportParameterExpression><![CDATA[$P{reportHelper}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="includeDiveSites">
+						<subreportParameterExpression><![CDATA[$P{includeDiveSites}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="lengthUnit">
+						<subreportParameterExpression><![CDATA[$P{lengthUnit}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="includeDiveSitesDocuments">
+						<subreportParameterExpression><![CDATA[$P{includeDiveSitesDocuments}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{reportHelper}.getDiveSitesForDives($P{dives}))]]></dataSourceExpression>
+					<subreportExpression><![CDATA[be.vds.jtbdive.client.util.ResourceManager.getInstance().getReportAsInputStream("rpt_dive_site.jasper")]]></subreportExpression>
+				</subreport>
+				<break>
+					<reportElement x="0" y="4" width="100" height="1"/>
+				</break>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="500" splitType="Prevent">
+			<staticText>
+				<reportElement x="20" y="0" width="111" height="20" forecolor="#6C0000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Jtb Dive LogBook]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="69" width="555" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{i18n}.getString("logbook", $P{locale})
++" : " + $P{logbook}.getName()]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RealSize" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="20" height="20"/>
+				<imageExpression><![CDATA[be.vds.jtbdive.client.util.ResourceManager.getInstance().getImage("logos/logo_64.png")]]></imageExpression>
+			</image>
+			<break>
+				<reportElement x="0" y="499" width="555" height="1">
+					<printWhenExpression><![CDATA[new Boolean($P{logbook}.getDives() != null &&  $P{logbook}.getDives().size() > 0)]]></printWhenExpression>
+				</reportElement>
+			</break>
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement stretchType="RelativeToTallestObject" x="131" y="136" width="293" height="347"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#040202"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#040202"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#040202"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#040202"/>
+				</box>
+				<imageExpression><![CDATA[be.vds.jtbdive.client.util.ResourceManager.getInstance().getImage("splash.png")]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="0" y="99" width="555" height="20">
+					<printWhenExpression><![CDATA[new Boolean($P{logbook} != null && $P{logbook}.getOwner() != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{logbook}.getOwner().getFullName()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="14" width="280" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{i18n}.getString("printed.on", $P{locale}) +
+" " + be.vds.jtbdive.client.view.utils.UIAgent.getInstance().getFormatDateHoursFull().format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="34" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="34" width="280" height="20"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[http://sourceforge.net/projects/jtbdivelogbook]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="153" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="11" width="280" height="20"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{i18n}.getString("legends", $P{locale})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="31" y="36" width="230" height="20"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{i18n}.getString("roles", $P{locale})]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement key="fisrt" positionType="Float" stretchType="RelativeToTallestObject" x="53" y="56" width="21" height="20" isRemoveLineWhenBlank="true"/>
+				<imageExpression><![CDATA[be.vds.jtbdive.client.view.utils.DiverRoleImageMapper.IMAGE_ROLES.get(DiverRole.ROLE_PALANQUEE_FIRST)]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="74" y="56" width="187" height="20"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{i18n}.getString("diver.role.chief", $P{locale})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="74" y="81" width="187" height="20"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{i18n}.getString("diver.role.second", $P{locale})]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement key="second" positionType="Float" stretchType="RelativeToTallestObject" x="53" y="81" width="21" height="20" isRemoveLineWhenBlank="true"/>
+				<imageExpression><![CDATA[be.vds.jtbdive.client.view.utils.DiverRoleImageMapper.IMAGE_ROLES.get(DiverRole.ROLE_PALANQUEE_SECOND)]]></imageExpression>
+			</image>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement key="camera" positionType="Float" stretchType="RelativeToTallestObject" x="280" y="56" width="21" height="20" isRemoveLineWhenBlank="true"/>
+				<imageExpression><![CDATA[be.vds.jtbdive.client.view.utils.DiverRoleImageMapper.IMAGE_ROLES.get(DiverRole.ROLE_PALANQUEE_MEDICAL_SUPPORT)]]></imageExpression>
+			</image>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement key="medic" positionType="Float" stretchType="RelativeToTallestObject" x="280" y="81" width="21" height="20" isRemoveLineWhenBlank="true"/>
+				<imageExpression><![CDATA[be.vds.jtbdive.client.view.utils.DiverRoleImageMapper.IMAGE_ROLES.get(DiverRole.ROLE_PALANQUEE_CAMERA)]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="301" y="56" width="187" height="20"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{i18n}.getString("diver.role.medicalsupport", $P{locale})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="301" y="81" width="187" height="20"/>
+				<box leftPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{i18n}.getString("diver.role.camera", $P{locale})]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="5" width="555" height="1"/>
+			</break>
+		</band>
+	</summary>
+</jasperReport>

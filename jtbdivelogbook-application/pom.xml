@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>be.vds.jtbdive</groupId>
+		<artifactId>jtbdivelogbook-global</artifactId>
+		<version>2.8.0</version>
+		<relativePath>../jtbdivelogbook-global</relativePath>
+	</parent>
+
+	<packaging>pom</packaging>
+	<artifactId>jtbdivelogbook-application</artifactId>
+	<name>jtbdivelogbook-application</name>
+	<description>This module regroups the different part of the application: core, persistence and client. </description>
+	<url>http://sourceforge.net/projects/jtbdivelogbook/</url>
+
+	<modules>
+		<module>../jtbdivelogbook-core</module>
+		<module>../jtbdivelogbook-xml</module>
+		<module>../jtbdivelogbook-persistence</module>
+		<!-- <module>../jtbdivelogbook-client-config</module> -->
+		<!-- <module>../jtbdivelogbook-client-config-xml</module> -->
+		<module>../jtbdivelogbook-client</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+</project>

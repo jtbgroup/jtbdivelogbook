@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="be.vds.jtbdive.core.model.LogBook" table="logbooks">
+		<id name="id" column="id" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="name" type="string" column="name" />
+		<many-to-one name="owner"
+			class="be.vds.jtbdive.core.model.Diver" column="owner_id"
+			not-null="false" lazy="false" />
+
+		<set name="dives" table="logbook_dives"
+			cascade="all-delete-orphan" lazy="false">
+			<key column="logbook_id" />
+			<one-to-many class="be.vds.jtbdive.core.model.Dive" />
+		</set>
+	</class>
+
+</hibernate-mapping>

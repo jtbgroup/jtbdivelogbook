@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="be.vds.jtbdive.core.model.Dive" table="dives">
+		<id name="id" column="id" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="number" />
+		<property name="maxDepth" column="depth" />
+		<property name="diveTime" />
+		<property name="date">
+			<column name="date" sql-type="DATE" />
+		</property>
+		<property name="comment">
+			<column name="comment" sql-type="LONGBLOB" />
+		</property>
+		<property name="waterTemperature" />
+		<property name="surfaceTime" />
+		<property name="altitude" />
+		<many-to-one name="diveLocation"
+			class="be.vds.jtbdive.core.model.DiveLocation"
+			column="divelocation_id" not-null="false" lazy="false" />
+		<component name="palanquee"
+			class="be.vds.jtbdive.core.model.Palanquee"/>
+		<one-to-one name="physiologicalStatus"
+			class="be.vds.jtbdive.core.model.PhysiologicalStatus" cascade="all"
+			lazy="false" />
+		<one-to-one name="diveProfile"
+			class="be.vds.jtbdive.core.model.DiveProfile" cascade="all"
+			lazy="false" />
+		<component name="equipment"
+			class="be.vds.jtbdive.core.model.Equipment" />
+	</class>
+
+</hibernate-mapping>

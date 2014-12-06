@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="be.vds.jtbdive.core.model.Palanquee"
+		table="palanquees">
+		<id name="id" column="id" type="long">
+			<generator class="increment" />
+		</id>
+
+		<set name="palanqueeEntries" table="palanquee_entries"
+			cascade="all-delete-orphan" lazy="false">
+			<key column="palanquee_id" />
+			<one-to-many
+				class="be.vds.jtbdive.core.model.PalanqueeEntry" />
+		</set>
+	</class>
+
+</hibernate-mapping>
