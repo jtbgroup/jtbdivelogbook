@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/logbook/" targetNamespace="http://www.example.org/logbook/">
+    <element name="logbook" type="tns:logbookType"></element>
+
+    <complexType name="logbookType">
+    	<sequence>
+    		<element name="version" type="string" minOccurs="1" maxOccurs="1">
+    			<annotation>
+    				<documentation>The version with which the file has been stored the last time</documentation>
+    			</annotation></element>
+    		<element name="id" type="long" minOccurs="1" maxOccurs="1">
+    			<annotation>
+    				<documentation>the unique ID of the logbook. This must match the file name.</documentation>
+    			</annotation></element>
+    		<element name="dives" type="tns:divesType" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="divesType">
+    	<sequence>
+    		<element name="dive" type="tns:diveType" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="diveType">
+    	<sequence>
+    		<element name="date" type="dateTime" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="number" type="int" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="watertemperature" type="double" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="divetime" type="long" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="maxdepth" type="double" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="surfacetime" type="int" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="divesite" type="long"></element>
+    	</sequence>
+    	<attribute name="id" type="long"></attribute>
+    </complexType>
+</schema>

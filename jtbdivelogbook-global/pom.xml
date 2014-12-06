@@ -1,0 +1,117 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>be.vds.jtbdive</groupId>
+	<artifactId>jtbdivelogbook-global</artifactId>
+	<packaging>pom</packaging>
+	<name>jtbdivelogbook-global</name>
+	<version>2.8.0</version>
+	<url>http://sourceforge.net/projects/jtbdivelogbook/</url>
+	<developers>
+		<developer>
+			<id>gaut'</id>
+			<name>Gautier Vanderslyen</name>
+			<email>gautier.vanderslyen@gmail.com</email>
+			<organization>J t'B</organization>
+			<organizationUrl>
+                http://sourceforge.net/projects/jtbdivelogbook/
+            </organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>designer</role>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+	<properties>
+		<!-- General properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Website properties -->
+		<release.last.stable>${project.version}</release.last.stable>
+		<release.last.beta>2.8.0</release.last.beta>
+		<relase.dummy>25.3.13</relase.dummy>
+	</properties>
+
+	<repositories>
+		<repository>
+            <id>java.net-Public</id>
+            <name>Maven Java Net Snapshots and Releases</name>
+            <url>https://maven.java.net/content/groups/public/</url>
+        </repository>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>central apache 2</id>
+			<name>Central Repository</name>
+			<url>http://repo.maven.apache.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>apache</id>
+			<name>apache</name>
+			<url>http://people.apache.org/repo/m1-ibiblio-rsync-repository/</url>
+		</repository>
+		<repository>
+			<id>jasperreports</id>
+			<name>jasperreports</name>
+			<url>http://repo2.maven.org/maven2/</url>
+		</repository>
+		<!-- <repository> -->
+		<!-- <id>sonatype</id> -->
+		<!-- <name>sonatype</name> -->
+		<!-- <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url> -->
+		<!-- </repository> -->
+		<repository>
+			<id>fuin.org</id>
+			<name>Repository at fuin.org</name>
+			<url>http://www.fuin.org/maven-repository</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<meminitial>512</meminitial>
+					<maxmem>1500</maxmem>
+					<verbose>false</verbose>
+					<fork>true</fork>
+					<executable>${JAVA_HOME}/bin/javac</executable>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.0-beta-3</version>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>

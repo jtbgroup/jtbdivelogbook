@@ -1,0 +1,25 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Thu Jun 30 07:20:10 CEST 2011
+4335434a4b99119ae0b7df616a367ea90ce45214@proxysrv011.idcn.mil.intra\:8080>default-http\://download.java.net/maven/2/.lastUpdated=1309410582640
+http\://download.java.net/maven/1/.lastUpdated=1309411208765
+http\://jasperreports.sourceforge.net/maven2/.error=
+http\://repo1.maven.org/maven2/.lastUpdated=1309411209531
+http\://download.java.net/maven/1/.error=
+http\://people.apache.org/repo/m1-ibiblio-rsync-repository/.lastUpdated=1309411209937
+4335434a4b99119ae0b7df616a367ea90ce45214@proxysrv011.idcn.mil.intra\:8080>default-http\://repo1.maven.org/maven2/.lastUpdated=1309410582640
+4335434a4b99119ae0b7df616a367ea90ce45214@proxysrv011.idcn.mil.intra\:8080>default-http\://oss.sonatype.org/service/local/staging/deploy/maven2/.lastUpdated=1308041693410
+http\://jasperreports.sourceforge.net/maven2/.lastUpdated=1309411210312
+http\://www.fuin.org/maven-repository/.error=
+http\://download.java.net/maven/2/.lastUpdated=1309411209203
+bd3cce295bd8d2ed6db1909dcf768647b6e7f135@proxysrv011\:8080>default-http\://oss.sonatype.org/service/local/staging/deploy/maven2/.lastUpdated=1308042234906
+4335434a4b99119ae0b7df616a367ea90ce45214@proxysrv011\:8080>default-http\://oss.sonatype.org/service/local/staging/deploy/maven2/.lastUpdated=1308042816001
+4335434a4b99119ae0b7df616a367ea90ce45214@proxysrv011.idcn.mil.intra\:8080>default-http\://download.java.net/maven/1/.lastUpdated=1309410582625
+4335434a4b99119ae0b7df616a367ea90ce45214@proxysrv011.idcn.mil.intra\:8080>default-http\://jasperreports.sourceforge.net/maven2/.lastUpdated=1309410582671
+http\://download.java.net/maven/2/.error=
+4335434a4b99119ae0b7df616a367ea90ce45214@proxysrv011.idcn.mil.intra\:8080>default-http\://www.fuin.org/maven-repository/.lastUpdated=1309410582687
+http\://people.apache.org/repo/m1-ibiblio-rsync-repository/.error=
+4335434a4b99119ae0b7df616a367ea90ce45214@proxysrv011.idcn.mil.intra\:8080>default-http\://people.apache.org/repo/m1-ibiblio-rsync-repository/.lastUpdated=1309410582656
+http\://www.fuin.org/maven-repository/.lastUpdated=1309411210500
+default-http\://oss.sonatype.org/service/local/staging/deploy/maven2/.lastUpdated=1308042155781
+http\://oss.sonatype.org/service/local/staging/deploy/maven2/.error=Could not transfer artifact dockingFrames\:dockingFramesCore\:pom\:1.1.0 from/to sonatype (http\://oss.sonatype.org/service/local/staging/deploy/maven2/)\: Access denied to\: http\://oss.sonatype.org/service/local/staging/deploy/maven2/dockingFrames/dockingFramesCore/1.1.0/dockingFramesCore-1.1.0.pom
+http\://repo1.maven.org/maven2/.error=

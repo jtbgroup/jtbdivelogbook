@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_palanquee" pageWidth="219" pageHeight="60" orientation="Landscape" columnWidth="209" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="be.vds.jtbdive.core.core.catalogs.DiverRole"/>
+	<parameter name="locale" class="java.util.Locale"/>
+	<field name="diver" class="be.vds.jtbdive.core.core.Diver"/>
+	<field name="roles" class="java.util.Set"/>
+	<variable name="i18n" class="be.smd.i18n.I18nResourceManager">
+		<variableExpression><![CDATA[be.smd.i18n.I18nResourceManager.sharedInstance()]]></variableExpression>
+		<initialValueExpression><![CDATA[be.smd.i18n.I18nResourceManager.sharedInstance()]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Prevent"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Prevent"/>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Prevent">
+			<elementGroup>
+				<image hAlign="Center" vAlign="Middle">
+					<reportElement key="fisrt" positionType="Float" x="122" y="0" width="21" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{roles}.contains( DiverRole.ROLE_PALANQUEE_FIRST )]]></printWhenExpression>
+					</reportElement>
+					<imageExpression class="java.awt.Image"><![CDATA[be.vds.jtbdive.client.view.utils.DiverRoleImageMapper.IMAGE_ROLES.get(DiverRole.ROLE_PALANQUEE_FIRST)]]></imageExpression>
+				</image>
+				<image hAlign="Center" vAlign="Middle">
+					<reportElement key="second" positionType="Float" x="144" y="0" width="21" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{roles}.contains( DiverRole.ROLE_PALANQUEE_SECOND )]]></printWhenExpression>
+					</reportElement>
+					<imageExpression class="java.awt.Image"><![CDATA[be.vds.jtbdive.client.view.utils.DiverRoleImageMapper.IMAGE_ROLES.get(DiverRole.ROLE_PALANQUEE_SECOND)]]></imageExpression>
+				</image>
+				<image hAlign="Center" vAlign="Middle">
+					<reportElement key="camera" positionType="Float" x="166" y="0" width="21" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{roles}.contains( DiverRole.ROLE_PALANQUEE_MEDICAL_SUPPORT )]]></printWhenExpression>
+					</reportElement>
+					<imageExpression class="java.awt.Image"><![CDATA[be.vds.jtbdive.client.view.utils.DiverRoleImageMapper.IMAGE_ROLES.get(DiverRole.ROLE_PALANQUEE_MEDICAL_SUPPORT)]]></imageExpression>
+				</image>
+				<image hAlign="Center" vAlign="Middle">
+					<reportElement key="medic" positionType="Float" x="188" y="0" width="21" height="20" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[$F{roles}.contains( DiverRole.ROLE_PALANQUEE_CAMERA )]]></printWhenExpression>
+					</reportElement>
+					<imageExpression class="java.awt.Image"><![CDATA[be.vds.jtbdive.client.view.utils.DiverRoleImageMapper.IMAGE_ROLES.get(DiverRole.ROLE_PALANQUEE_CAMERA)]]></imageExpression>
+				</image>
+			</elementGroup>
+			<textField>
+				<reportElement x="0" y="0" width="120" height="20"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{diver}.getFullName()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="21" width="209" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="be.vds.jtbdive.core.model.DiveProfile"
+		table="diveprofiles">
+		<id name="id" column="id" type="long">
+			<generator class="increment" />
+		</id>
+		<map name="depthEntries" table="depthentries"
+			order-by="time_second asc" lazy="false"
+			cascade="all-delete-orphan">
+			<key column="depthentries_id" />
+			<map-key column="time_second" type="java.lang.Integer" />
+			<element column="depth" type="java.lang.Double" />
+		</map>
+		<set name="decoWarnings" table="decowarnings"
+			cascade="all-delete-orphan" lazy="false">
+			<key column="diveprofile_id" />
+			<element type="java.lang.Integer" />
+		</set>
+		<set name="ascentWarnings" table="ascentWarnings"
+			cascade="all-delete-orphan" lazy="false">
+			<key column="diveprofile_id" />
+			<element type="java.lang.Integer" />
+		</set>
+		<set name="remainingBottomTimeWarnings"
+			table="remainingBottomTimeWarnings" cascade="all-delete-orphan"
+			lazy="false">
+			<key column="diveprofile_id" />
+			<element type="java.lang.Integer" />
+		</set>
+		<set name="decoEntries" table="decoEntries"
+			cascade="all-delete-orphan" lazy="false">
+			<key column="diveprofile_id" />
+			<element type="java.lang.Integer" />
+		</set>
+	</class>
+
+</hibernate-mapping>

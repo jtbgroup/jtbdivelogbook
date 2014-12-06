@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="be.vds.jtbdive.core.model.DiveTank" table="divetanks">
+		<id name="id" column="id" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="beginPressure" />
+		<property name="endPressure" />
+		<property name="volume" />
+	</class>
+
+</hibernate-mapping>

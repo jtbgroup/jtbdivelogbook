@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_dive_simple" pageWidth="595" pageHeight="842" columnWidth="373" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="686a84f2-c1f5-4e68-b065-a67dc5b3a6c6">
+	<property name="ireport.zoom" value="1.6500000000000004"/>
+	<property name="ireport.x" value="267"/>
+	<property name="ireport.y" value="89"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="locale" class="java.util.Locale"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/gautier/workspace/WS-JTBDiveLogBook/jtbdivelogbook-client/src/main/resources/resources/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="includeDiveProfile" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[new Boolean(true)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="lengthUnit" class="be.vds.jtbdive.core.core.units.LengthUnit">
+		<defaultValueExpression><![CDATA[be.vds.jtbdive.core.core.units.LengthUnit.METER]]></defaultValueExpression>
+	</parameter>
+	<parameter name="temperatureUnit" class="be.vds.jtbdive.core.core.units.TemperatureUnit">
+		<defaultValueExpression><![CDATA[be.vds.jtbdive.core.core.units.TemperatureUnit.CELSIUS]]></defaultValueExpression>
+	</parameter>
+	<parameter name="includeDiveDocuments" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[new Boolean(true)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportHelper" class="be.vds.jtbdive.client.util.ReportHelper"/>
+	<parameter name="includeDiveDetails" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[new Boolean(true)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="includePhysiologicalStatus" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[new Boolean(true)]]></defaultValueExpression>
+	</parameter>
+	<field name="number" class="java.lang.Integer"/>
+	<field name="date" class="java.util.Date"/>
+	<field name="diveSite" class="be.vds.jtbdive.core.core.DiveSite"/>
+	<field name="maxDepth" class="java.lang.Double"/>
+	<field name="diveTime" class="java.lang.Integer"/>
+	<field name="waterTemperature" class="java.lang.Double"/>
+	<field name="surfaceTime" class="java.lang.Integer"/>
+	<field name="comment" class="java.lang.String"/>
+	<field name="palanquee" class="be.vds.jtbdive.core.core.Palanquee"/>
+	<field name="diveProfile" class="be.vds.jtbdive.core.core.DiveProfile"/>
+	<field name="physiologicalStatus" class="be.vds.jtbdive.core.core.PhysiologicalStatus"/>
+	<field name="documents" class="java.util.List"/>
+	<field name="divePlatform" class="be.vds.jtbdive.core.core.catalogs.DivePlatform"/>
+	<field name="divePurposes" class="java.util.List"/>
+	<field name="diveTypes" class="java.util.List"/>
+	<variable name="i18n" class="be.smd.i18n.I18nResourceManager">
+		<variableExpression><![CDATA[be.smd.i18n.I18nResourceManager.sharedInstance()]]></variableExpression>
+		<initialValueExpression><![CDATA[be.smd.i18n.I18nResourceManager.sharedInstance()]]></initialValueExpression>
+	</variable>
+	<group name="divedocuments">
+		<groupExpression><![CDATA[$F{number}]]></groupExpression>
+		<groupFooter>
+			<band height="30" splitType="Prevent">
+				<printWhenExpression><![CDATA[new Boolean($F{documents} != null && $P{includeDiveDocuments}.booleanValue())]]></printWhenExpression>
+				<elementGroup>
+					<rectangle radius="10">
+						<reportElement uuid="1cf4a4a7-132d-49e7-af4a-9b480a1635ab" key="documentRectangle" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Transparent" x="20" y="0" width="515" height="25" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true">
+							<printWhenExpression><![CDATA[new Boolean($F{documents} != null && $P{includeDiveDocuments}.booleanValue())]]></printWhenExpression>
+						</reportElement>
+					</rectangle>
+					<subreport>
+						<reportElement uuid="53916720-bd58-444c-a291-787c2ca73ff2" positionType="Float" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="33" y="16" width="491" height="9" isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[new Boolean($P{includeDiveDocuments}.booleanValue() && $F{documents} != null && $F{documents}.size() > 0)]]></printWhenExpression>
+						</reportElement>
+						<subreportParameter name="documentType">
+							<subreportParameterExpression><![CDATA["dive"]]></subreportParameterExpression>
+						</subreportParameter>
+						<subreportParameter name="locale">
+							<subreportParameterExpression><![CDATA[$P{locale}]]></subreportParameterExpression>
+						</subreportParameter>
+						<subreportParameter name="reportHelper">
+							<subreportParameterExpression><![CDATA[$P{reportHelper}]]></subreportParameterExpression>
+						</subreportParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{documents})]]></dataSourceExpression>
+						<subreportExpression><![CDATA[be.vds.jtbdive.client.util.ResourceManager.getInstance().getReportAsInputStream("rpt_documents.jasper")]]></subreportExpression>
+					</subreport>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="901c4bdf-a97f-4a6c-9fc4-d3a4e6bee071" x="352" y="1" width="172" height="15" forecolor="#808080">
+							<printWhenExpression><![CDATA[new Boolean($F{documents} != null && $P{includeDiveDocuments}.booleanValue())]]></printWhenExpression>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font isBold="false" isItalic="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{i18n}.getString("documents", $P{locale})]]></textFieldExpression>
+					</textField>
+				</elementGroup>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="profile">
+		<groupExpression><![CDATA[$F{number}]]></groupExpression>
+		<groupFooter>
+			<band height="30" splitType="Prevent">
+				<printWhenExpression><![CDATA[new Boolean($F{diveProfile} != null && $P{includeDiveProfile}.booleanValue())]]></printWhenExpression>
+				<elementGroup>
+					<rectangle radius="10">
+						<reportElement uuid="c95016b3-3033-4c84-b95f-4c6be66d10f4" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Transparent" x="20" y="0" width="515" height="25" isRemoveLineWhenBlank="true" printWhenGroupChanges="profile">
+							<printWhenExpression><![CDATA[new Boolean($F{diveProfile} != null && $P{includeDiveProfile}.booleanValue())]]></printWhenExpression>
+						</reportElement>
+					</rectangle>
+					<image scaleImage="RealSize" hAlign="Center" vAlign="Middle">
+						<reportElement uuid="245861ed-1896-468c-905c-db9ff60fc191" positionType="Float" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="33" y="16" width="491" height="5" isRemoveLineWhenBlank="true">
+							<printWhenExpression><![CDATA[new Boolean($F{diveProfile} != null && $P{includeDiveProfile}.booleanValue())]]></printWhenExpression>
+						</reportElement>
+						<imageExpression><![CDATA[$P{reportHelper}.getDiveProfileImage( $F{diveProfile}, 502, 265, $P{locale}, $P{lengthUnit} )]]></imageExpression>
+					</image>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="b910abc9-7a7a-4bc6-b516-e63c7c601235" x="352" y="1" width="172" height="15" forecolor="#808080">
+							<printWhenExpression><![CDATA[new Boolean($F{diveProfile} != null && $P{includeDiveProfile}.booleanValue())]]></printWhenExpression>
+						</reportElement>
+						<textElement textAlignment="Right">
+							<font isBold="false" isItalic="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{i18n}.getString("dive.profile", $P{locale})]]></textFieldExpression>
+					</textField>
+				</elementGroup>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="divedetails">
+		<groupExpression><![CDATA[$F{number}]]></groupExpression>
+		<groupFooter>
+			<band height="75">
+				<printWhenExpression><![CDATA[$P{includeDiveDetails}]]></printWhenExpression>
+				<rectangle radius="10">
+					<reportElement uuid="85605fee-7577-4007-8cd3-23c812d19471" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Transparent" x="20" y="0" width="515" height="70" isRemoveLineWhenBlank="true" printWhenGroupChanges="profile"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="20fa217e-fde2-4b38-9d67-c876894e07f8" x="352" y="2" width="172" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("details", $P{locale})]]></textFieldExpression>
+				</textField>
+				<elementGroup>
+					<textField isBlankWhenNull="false">
+						<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="27" y="17" width="118" height="15" forecolor="#000000"/>
+						<textElement textAlignment="Left">
+							<font isBold="true" isItalic="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{i18n}.getString("dive.platform", $P{locale})]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="b0af4bd5-0f0b-4ea1-8912-0491dd7f78b7" stretchType="RelativeToTallestObject" x="26" y="47" width="119" height="15" forecolor="#000000"/>
+						<textElement textAlignment="Left">
+							<font isBold="true" isItalic="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{i18n}.getString("dive.type", $P{locale})]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="27" y="32" width="118" height="15" forecolor="#000000"/>
+						<textElement textAlignment="Left">
+							<font isBold="true" isItalic="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$V{i18n}.getString("purpose", $P{locale})]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="145" y="32" width="369" height="15" forecolor="#000000"/>
+						<textElement textAlignment="Left">
+							<font isBold="false" isItalic="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{reportHelper}.getFormattedKeyedCatalogs($F{divePurposes},$P{locale})]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="145" y="17" width="369" height="15" forecolor="#000000"/>
+						<textElement textAlignment="Left">
+							<font isBold="false" isItalic="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{divePlatform}==null?"":$V{i18n}.getString($F{divePlatform}.getKey(), $P{locale})]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="b0af4bd5-0f0b-4ea1-8912-0491dd7f78b7" stretchType="RelativeToTallestObject" x="145" y="47" width="369" height="15" forecolor="#000000"/>
+						<textElement textAlignment="Left">
+							<font isBold="false" isItalic="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{reportHelper}.getFormattedKeyedCatalogs($F{diveTypes},$P{locale})]]></textFieldExpression>
+					</textField>
+				</elementGroup>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="physiologicaldata">
+		<groupExpression><![CDATA[$F{number}]]></groupExpression>
+		<groupFooter>
+			<band height="70">
+				<printWhenExpression><![CDATA[$P{includePhysiologicalStatus}]]></printWhenExpression>
+				<rectangle radius="10">
+					<reportElement uuid="85605fee-7577-4007-8cd3-23c812d19471" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Transparent" x="20" y="0" width="515" height="65" isRemoveLineWhenBlank="true" printWhenGroupChanges="profile"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="20fa217e-fde2-4b38-9d67-c876894e07f8" x="352" y="0" width="172" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("physiological.status", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="26" y="17" width="118" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="true" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("saturation.index", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="145" y="17" width="115" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[String.valueOf($F{physiologicalStatus}.getSaturationIndexAfterDive())]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="26" y="32" width="118" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="true" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("max.ppo2", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="145" y="32" width="115" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[String.valueOf($F{physiologicalStatus}.getMaxPPO2())]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="27" y="47" width="118" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="true" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("cns.before.dive", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="145" y="47" width="115" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[String.valueOf($F{physiologicalStatus}.getCnsBeforeDive())]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="270" y="17" width="118" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="true" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("temperature.skincool", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="388" y="17" width="115" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[String.valueOf($F{physiologicalStatus}.getSkinCoolTemperature())]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="270" y="32" width="118" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="true" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("arterialmicrobubble", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="388" y="32" width="115" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[String.valueOf($F{physiologicalStatus}.getArterialMicrobubbleLevel())]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="270" y="47" width="118" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="true" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("interpulmonary.shunt", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e23c99d3-2aa3-454b-ab3b-4a8a0ced5d51" stretchType="RelativeToTallestObject" x="388" y="47" width="115" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Left">
+						<font isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[String.valueOf($F{physiologicalStatus}.getInterPulmonaryShunt())]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="10" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="145" splitType="Prevent">
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement uuid="b92b0a65-c3c5-4dfe-88e1-085750e0d55f" x="10" y="0" width="525" height="20" backcolor="#212149"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+				<image scaleImage="RealSize" hAlign="Center" vAlign="Middle">
+					<reportElement uuid="b02300a3-d156-4ae4-83b1-effd3d42a1f7" x="20" y="0" width="20" height="20"/>
+					<imageExpression><![CDATA[be.vds.jtbdive.client.util.ResourceManager.getInstance().getImage("document16.png")]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="9521f166-4fc3-4411-8f9e-9674494e81db" stretchType="RelativeToTallestObject" mode="Transparent" x="53" y="0" width="459" height="20" forecolor="#FEFEFE"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("dive", $P{locale}) + " : " + $F{number}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement uuid="3d2f0a23-7111-43f0-baf1-e344e8cd10b4" mode="Transparent" x="150" y="65" width="125" height="35"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="f78c644f-d862-45b5-8ac2-3c960ccde6e8" stretchType="RelativeToTallestObject" x="182" y="84" width="88" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("dive.time", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="d856a7c1-0633-452d-a739-3c01b540fe2f" x="155" y="69" width="115" height="15"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("HH:mm:ss")
+.format(new java.util.GregorianCalendar(0, 0, 0, 0,$F{diveTime}.intValue(),0).getTime())]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement uuid="ff099760-aec8-4e26-a009-a70e45e27de5" mode="Transparent" x="20" y="25" width="125" height="35"/>
+				</rectangle>
+				<textField>
+					<reportElement uuid="0530b123-4092-4bf4-9bcd-78911aab1f7a" x="27" y="27" width="114" height="15"/>
+					<textElement textAlignment="Left">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[be.vds.jtbdive.client.view.utils.UIAgent.getInstance().getFormatDateHoursFull().format($F{date})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="95871dd9-b866-40b1-8e35-5ce63da7de32" x="53" y="42" width="88" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("date", $P{locale})]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement uuid="fe817e72-b98d-4cac-8d5c-8a8bb78decda" mode="Transparent" x="150" y="25" width="255" height="35"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="1704782a-3cda-4eb2-9260-0b3c0c73bc33" stretchType="RelativeToTallestObject" x="157" y="27" width="238" height="15"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{diveSite}.getName()]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="0d835759-e07a-43c0-bb67-2e8929a3750a" x="231" y="41" width="168" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("divesite", $P{locale})]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement uuid="42ed9c33-9eb7-4bed-bc8d-03f23d1c77b8" mode="Transparent" x="20" y="65" width="125" height="35"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="0960ba2a-3ee3-43a9-ae89-360c28f58c04" x="57" y="83" width="84" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("depth", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="75889cf4-1381-480c-b307-bd06e8136898" x="27" y="69" width="114" height="15"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[be.vds.jtbdive.core.utils.StringManipulator.
+    formatFixedDecimalNumber(
+      be.vds.jtbdive.client.core.UnitsAgent.getInstance().convertLengthFromModel($F{maxDepth}.doubleValue(),$P{lengthUnit} )
+      , be.vds.jtbdive.client.view.utils.UIAgent.PRECISION_DEPTH, be.vds.jtbdive.client.view.utils.UIAgent.NUMBER_DECIMAL_CHAR)
+    + " "+$P{lengthUnit}.getSymbol()]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement uuid="35627ade-4872-4464-b5b2-3788e3df402b" mode="Transparent" x="410" y="25" width="125" height="35"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="057b6d76-0ace-4a4d-9052-6fbfaafa4c19" x="436" y="41" width="94" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("temperature", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="449ffdfd-260b-4f46-8e4e-0a063c8b2368" x="416" y="27" width="100" height="15"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[be.vds.jtbdive.core.utils.StringManipulator.
+    formatFixedDecimalNumber(
+       be.vds.jtbdive.client.core.UnitsAgent.getInstance().convertTemperatureFromModel($F{waterTemperature}.doubleValue(),$P{temperatureUnit} )
+   , be.vds.jtbdive.client.view.utils.UIAgent.PRECISION_WATER_TEMP, be.vds.jtbdive.client.view.utils.UIAgent.NUMBER_DECIMAL_CHAR)
+    + " "+ $P{temperatureUnit}.getSymbol()]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement uuid="ff1ef85a-b61c-4153-93eb-7c7adb3e5f8f" mode="Transparent" x="280" y="65" width="125" height="35"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="29e52b0d-000c-4c16-980d-527da5f8ec8d" x="286" y="69" width="109" height="15"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("HH:mm:ss")
+.format(new java.util.GregorianCalendar(0, 0, 0, 0,$F{surfaceTime}.intValue(),0).getTime())]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="91130b2f-a2ef-41f9-ad7b-8a6534084d3d" x="300" y="84" width="99" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("surface.time", $P{locale})]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement uuid="2181d871-9dc5-4adf-a6bd-39495c5a16e5" mode="Transparent" x="410" y="65" width="125" height="35"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="2e322d03-7f7f-4796-ac20-343ab854e400" x="436" y="84" width="94" height="15" forecolor="#808080"/>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("saturation", $P{locale})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="d5af1f0a-83be-4b7c-863e-beeafd874d1a" x="416" y="69" width="100" height="15"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.lang.String.valueOf($F{physiologicalStatus}.getSaturationIndexAfterDive())]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement uuid="7a4fc77b-adf0-4e21-b1b3-176e3b0c44b6" stretchType="RelativeToTallestObject" mode="Transparent" x="280" y="105" width="255" height="40" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[new Boolean($F{comment} != null && $F{comment}.trim().length() > 0)]]></printWhenExpression>
+					</reportElement>
+				</rectangle>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="f7a137fd-5818-41e9-a47a-5b8946b2b005" positionType="Float" isPrintRepeatedValues="false" x="286" y="124" width="238" height="14" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[new Boolean($F{comment} != null && $F{comment}.trim().length() > 0)]]></printWhenExpression>
+					</reportElement>
+					<box bottomPadding="5">
+						<pen lineWidth="0.25" lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid"/>
+					</box>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{comment}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="c92df3ac-9a4d-4315-940f-3c9b16ded08c" positionType="Float" x="385" y="109" width="139" height="15" isRemoveLineWhenBlank="true" forecolor="#808080">
+						<printWhenExpression><![CDATA[new Boolean($F{comment} != null && $F{comment}.trim().length() > 0)]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("comment", $P{locale})]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<rectangle radius="10">
+					<reportElement uuid="3f44e437-68dd-492f-bf9b-faab88965e14" stretchType="RelativeToTallestObject" mode="Transparent" x="20" y="105" width="255" height="40" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[new Boolean($F{palanquee} != null && $F{palanquee}.getPalanqueeEntries().size() > 0)]]></printWhenExpression>
+					</reportElement>
+				</rectangle>
+				<subreport>
+					<reportElement uuid="7c043063-b337-4290-804d-5ffd18cc2025" positionType="Float" isPrintRepeatedValues="false" x="33" y="124" width="237" height="14" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[new Boolean($F{palanquee} != null && $F{palanquee}.getPalanqueeEntries().size() > 0)]]></printWhenExpression>
+					</reportElement>
+					<subreportParameter name="locale">
+						<subreportParameterExpression><![CDATA[$P{locale}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{palanquee}.getPalanqueeEntries())]]></dataSourceExpression>
+					<subreportExpression><![CDATA[be.vds.jtbdive.client.util.ResourceManager.getInstance().getReportAsInputStream("rpt_palanquee.jasper")]]></subreportExpression>
+				</subreport>
+				<textField>
+					<reportElement uuid="cb05a85d-aa89-49b8-90b0-eb50330919c8" positionType="Float" x="53" y="109" width="217" height="15" isRemoveLineWhenBlank="true" forecolor="#808080">
+						<printWhenExpression><![CDATA[new Boolean($F{palanquee} != null && $F{palanquee}.getPalanqueeEntries().size() > 0)]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font isBold="false" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{i18n}.getString("palanquee", $P{locale})]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

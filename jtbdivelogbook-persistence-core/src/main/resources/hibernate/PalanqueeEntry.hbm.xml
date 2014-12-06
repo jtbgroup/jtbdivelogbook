@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="be.vds.jtbdive.core.model.PalanqueeEntry"
+		table="palanqueeentries">
+		<id name="id" column="id" type="long">
+			<generator class="increment" />
+		</id>
+
+		<property name="diverRole" type="integer" />
+		<many-to-one name="diver"
+			class="be.vds.jtbdive.core.model.Diver" column="diver_id"
+			not-null="false" lazy="false"/>
+
+	</class>
+
+</hibernate-mapping>

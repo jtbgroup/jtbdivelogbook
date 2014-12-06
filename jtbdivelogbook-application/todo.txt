@@ -1,0 +1,33 @@
+* export wizard extension file
+* export wizard : icon file selector
+* icon diver detail / divesite detail
+* import wizard: when changing format, the other panels must be reset.
+* diverselection component : gap between diver and line
+* dive site selection component : idem
+* diveselection component : review gui design
+* Initialization: convert data proposition when data in old format
+* translation in french of video, camera and lead
+* dive time : change model: from minutes to seconds...
+* dive tank switch time: other type of component (timecomponent)
+* no save proposition when dives modified and closing a logbook
+* divetank : add switch time
+* enhance stats
+* link mix to profile (visually)
+* Can't read newer files with old versions
+* type of dive: add swimming pool
+* introduce sets of material
+* change equipment panel (material selection)
+* config wizard preload
+
+
+FURTHER
+--------
+*progress bar when download dive from dive computer must be thinner
+*symbol euro in dive mat
+equipment: when no mat associated: specific data must be editable
+introduce balloon tips
+add extra dive values in the report
+export uddf : include material
+export / import uddf : include rating
+import / export : only divesites, only divers, only material, full logbook (jtb format)
+import dive ==> match with dive sites or divers: review the swing

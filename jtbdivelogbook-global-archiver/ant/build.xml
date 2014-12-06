@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Aug 29, 2011 11:55:46 AM                                                        
+
+     project    
+     description
+                   
+     gautier                                                                
+     ====================================================================== -->
+<project basedir="." name="jtb dive logbook ant" default="deploy all local">
+	<description>
+            description
+    </description>
+	<property file="build.properties" />
+
+	<taskdef classname="com.sardak.antform.AntForm" name="antform" classpath="${ant.jars}/antform.jar" />
+
+	<target name="deploy all remote" depends="login form">
+		<antcall target="copy remote application" />
+		<antcall target="copy remote website" />
+	</target>
+	
+	<target name="deploy all local">
+			<antcall target="retrieve website" />
+			<antcall target="retrieve application" />
+		</target>
+
+	<target name="deploy website only remote" depends="login form">
+		<antcall target="copy remote website" />
+	</target>
+
+	<target name="deploy application only remote" depends="login form">
+		<antcall target="copy remote application" />
+	</target>
+
+	<!-- ================================= 
+          target: copy remote website              
+         ================================= -->
+	<target name="copy remote website" depends="retrieve website">
+		<echo message="Copying website" />
+		<scp todir="${ftp.login}@${ftp.host}:${ftp.website}" port="${ftp.port}" password="${ftp.password}" trust="yes" verbose="true" sftp="true">
+			<fileset dir="../build/website" />
+		</scp>
+	</target>
+
+<!--	<target name="test" depends="login form">
+		<mkdir dir="../jtbdivelogbook/application/senddir/test" />
+		<copy todir="../jtbdivelogbook/application/senddir/test">
+			<fileset dir="../jtbdivelogbook/website" />
+		</copy>
+		<scp todir="${ftp.login}@${ftp.host}:${ftp.website}" port="${ftp.port}" password="${ftp.password}" trust="yes" verbose="true" sftp="true">
+			<fileset dir="../jtbdivelogbook/application/senddir" />
+		</scp>
+		<echo>done</echo>
+	</target>
+-->
+	
+	<target name="retrieve website">
+		<copy todir="../build/website">
+			<fileset dir="${dir.website}" />
+		</copy>
+	</target>
+
+	
+	<!-- ================================= 
+          target: copy remote application              
+         ================================= -->
+	<target name="copy remote application" depends="retrieve application">
+		<echo message="Copying application" />
+		
+		
+		
+		<scp todir="${ftp.login}@${ftp.host}:${ftp.application.base}" port="${ftp.port}" password="${ftp.password}" trust="yes" verbose="true" sftp="true">
+			<fileset dir="../build/application/">
+				<patternset id="only.zip">
+					<include name="**/*.zip" />
+				</patternset>
+			</fileset>
+		</scp>
+	</target>
+
+	<target name="retrieve application">
+		<copy todir="../build/application/jtbdivelogbook-${application.version}">
+			<fileset dir="${dir.application}" />
+		</copy>
+
+		<zip destfile="../build/application/jtbdivelogbook-${application.version}/jtbdivelogbook-${application.version}.${application.modification}.zip">
+			<fileset dir="../build/application/jtbdivelogbook-${application.version}/jtbdivelogbook-${application.version}.${application.modification}" />
+		</zip>
+
+		<delete includeemptydirs="true">
+			<fileset dir="../build/application" excludes="*/jtbdivelogbook-${application.version}.${application.modification}.zip" includes="**/*" defaultexcludes="false" />
+		</delete>
+	</target>
+
+	<target name="login form">
+		<antform title="Login for scp">
+			<textProperty label="Login" property="ftp.login" />
+			<textProperty label="Password" property="ftp.password" password="true" />
+			<textProperty label="Host" property="ftp.host" />
+			<textProperty label="Port" property="ftp.port" />
+		</antform>
+
+
+	</target>
+
+</project>
