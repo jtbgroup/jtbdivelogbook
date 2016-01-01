@@ -31,6 +31,7 @@ public abstract class AbstractLogBookBrowserNodeConstructor implements
     private Map<Dive, DefaultMutableTreeNode> nodes = new HashMap<Dive, DefaultMutableTreeNode>();
 
     protected void registerNode(Dive dive, DefaultMutableTreeNode treenode) {
+    	System.out.println(dive);
         nodes.put(dive, treenode);
     }
 

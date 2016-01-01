@@ -18,6 +18,7 @@
 */
 package be.vds.jtbdive.client.view.core.divesite;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dialog;
 import java.awt.Dimension;
@@ -34,10 +35,9 @@ import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-
-import org.jdesktop.swingx.JXPanel;
 
 import be.vds.jtb.swing.layout.GridBagLayoutManager;
 import be.vds.jtb.swing.utils.WindowUtils;
@@ -47,7 +47,7 @@ import be.vds.jtbdive.core.core.DiveSite;
 import be.vds.jtbdive.core.exceptions.DataStoreException;
 import be.vds.jtbdive.core.logging.Syslog;
 
-public class DiveSiteChooser extends JXPanel {
+public class DiveSiteChooser extends JPanel {
 
 	private static final long serialVersionUID = -5744779590962263755L;
 	private static final Syslog LOGGER = Syslog
@@ -66,8 +66,6 @@ public class DiveSiteChooser extends JXPanel {
 	}
 
 	private void init() {
-		this.setOpaque(false);
-
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		GridBagLayoutManager.addComponent(this, createNameTf(), c, 0, 0, 1, 1,
@@ -76,6 +74,8 @@ public class DiveSiteChooser extends JXPanel {
 				1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER);
 		GridBagLayoutManager.addComponent(this, createResetButton(), c, 2, 0,
 				1, 1, 0, 0, GridBagConstraints.NONE, GridBagConstraints.CENTER);
+		
+		super.setOpaque(false);
 	}
 
 	private Component createNameTf() {

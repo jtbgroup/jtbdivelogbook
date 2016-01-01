@@ -34,10 +34,9 @@ import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-
-import org.jdesktop.swingx.JXPanel;
 
 import be.vds.jtb.swing.layout.GridBagLayoutManager;
 import be.vds.jtb.swing.utils.WindowUtils;
@@ -47,7 +46,7 @@ import be.vds.jtbdive.core.core.Diver;
 import be.vds.jtbdive.core.exceptions.DataStoreException;
 import be.vds.jtbdive.core.logging.Syslog;
 
-public class DiverChooser extends JXPanel {
+public class DiverChooser extends JPanel {
 
 	private static final long serialVersionUID = -2936125130478688459L;
 	private static final Syslog LOGGER = Syslog.getLogger(DiverChooser.class);
