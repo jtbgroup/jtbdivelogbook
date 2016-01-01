@@ -112,10 +112,13 @@ public class Diver implements Serializable {
 		return false;
 	}
 
-	@Override
 	public int hashCode() {
-		return Long.valueOf(id).hashCode();
-	}
+		if (-1 == id) {
+			return this.hashCode();
+		} else {
+			return Long.valueOf(id).hashCode();
+		}
+	};
 
 	@Override
 	public String toString() {

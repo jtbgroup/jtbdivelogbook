@@ -172,7 +172,11 @@ public class DiveSite implements Serializable, PinableObject {
 
 	@Override
 	public int hashCode() {
-		return Long.valueOf(id).hashCode();
+		if (-1 == id) {
+			return this.hashCode();
+		} else {
+			return Long.valueOf(id).hashCode();
+		}
 	}
 
 	public void setDocuments(List<Document> documents) {

@@ -349,9 +349,9 @@ public class Dive implements Serializable {
 
 	public int hashCode() {
 		if (-1 == id) {
-			return (int) id;
+			return this.hashCode();
 		} else {
-			return number + date.hashCode();
+			return Long.valueOf(id).hashCode();
 		}
 	};
 }
